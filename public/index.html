@@ -1,1 +1,7 @@
-
+<!doctype html><html lang="te"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VYRO NEWS</title><link rel="stylesheet" href="../shared.css"></head><body>
+<header class="topbar"><div class="brand"><span class="v">V</span>YRO <b>NEWS</b></div><a class="btn red" href="../admin/login.html">Admin</a></header><div class="ticker" id="ticker">BREAKING NEWS</div>
+<section class="hero"><div class="container"><div id="heroBadge"></div><h1 id="heroTitle">VYRO NEWS</h1><p id="heroText">తెలుగు రాష్ట్రాల తాజా వార్తలు</p></div></section>
+<main class="container"><section class="section"><h2>Latest News</h2><div class="cards" id="cards"></div></section></main>
+<script>
+const KEY="vyroNewsDB";let data=JSON.parse(localStorage.getItem(KEY)||"[]");let pub=data.filter(x=>x.status==="Published");if(pub.length){heroTitle.textContent=pub[0].title;heroText.textContent=pub[0].content;heroBadge.innerHTML=pub[0].breaking?'<span class="badge">BREAKING NEWS</span>':'';ticker.textContent=pub.filter(x=>x.breaking).slice(0,4).map(x=>x.title).join(" • ")||"VYRO NEWS";cards.innerHTML=pub.map(x=>'<article class="story">'+(x.image?'<img src="'+x.image+'">':'')+'<div><small>'+x.category+' • '+x.date+'</small><h3>'+x.title+'</h3><p>'+x.content+'</p></div></article>').join("")}else cards.innerHTML='<div class="empty">No published news yet.</div>';
+</script></body></html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="te">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VYRO NEWS — Article</title>
+<link rel="stylesheet" href="/shared.css">
+<style>
+.article-page{max-width:900px;margin:28px auto 50px}
+.back{display:inline-block;color:#b40000;font-weight:700;margin-bottom:18px}
+.article-page .cat{color:#b40000;font-weight:800;font-size:13px}
+.article-page h1{font-size:38px;line-height:1.25;margin:8px 0 10px}
+.article-meta{color:#777;font-size:13px;margin-bottom:20px}
+.article-image{width:100%;max-height:520px;object-fit:cover;border-radius:4px}
+.article-content{font-size:18px;line-height:1.9;margin-top:24px;white-space:pre-line}
+.not-found{text-align:center;padding:80px 15px}
+@media(max-width:600px){.article-page h1{font-size:27px}.article-content{font-size:16px}}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap"><span>VYRO NEWS</span><span class="social">తెలుగు | English</span></div></div>
+<header><div class="wrap head"><a class="logo" href="/"><i>V</i><strong>YRO</strong><b>NEWS</b><small>TELUGU NEWS PORTAL</small></a></div></header>
+<nav><div class="wrap nav"><a class="active" href="/">హోమ్</a><a href="/#andhra">ఆంధ్రప్రదేశ్</a><a href="/#telangana">తెలంగాణ</a><a href="/#cinema">సినిమా</a><a href="/#sports">క్రీడలు</a><a href="/#videos">వీడియోలు</a></div></nav>
+<main class="wrap article-page" id="article">Loading...</main>
+<script>
+const esc=v=>String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'","&#039;");
+const id=new URLSearchParams(location.search).get('id');
+async function load(){
+  const box=document.getElementById('article');
+  if(!id){box.innerHTML='<div class="not-found"><h1>Article not found</h1><a class="back" href="/">← Home</a></div>';return}
+  try{
+    const r=await fetch('/api/news',{cache:'no-store'});
+    const all=await r.json();
+    const n=all.find(x=>String(x.id)===String(id));
+    if(!n){box.innerHTML='<div class="not-found"><h1>వార్త దొరకలేదు</h1><a class="back" href="/">← Home</a></div>';return}
+    const img=n.image_url||n.image||'';
+    box.innerHTML=`
+      <a class="back" href="/">← VYRO NEWS Home</a>
+      <div class="cat">${esc(n.category||'వార్తలు')}</div>
+      <h1>${esc(n.title)}</h1>
+      <div class="article-meta">${n.created_at?new Date(n.created_at).toLocaleString('te-IN'):''}</div>
+      ${img?`<img class="article-image" src="${esc(img)}" alt="${esc(n.title)}">`:''}
+      <div class="article-content">${esc(n.content||'')}</div>`;
+    document.title=n.title+' — VYRO NEWS';
+  }catch(e){
+    box.innerHTML='<div class="not-found"><h1>వార్తను లోడ్ చేయలేకపోయాం</h1><a class="back" href="/">← Home</a></div>';
+  }
+}
+load();
+</script>
+</body>
+</html>

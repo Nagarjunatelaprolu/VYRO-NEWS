@@ -50,6 +50,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // Serve VYRO NEWS website
 app.use(express.static(path.join(__dirname, "../public")));
 app.use("/admin", express.static(path.join(__dirname, "../admin")));
+app.use("/shared.css", express.static(path.join(__dirname, "../shared.css")));
 const uploadDir = path.join(__dirname, "uploads");
 fs.mkdirSync(uploadDir, {recursive:true});
 const upload = multer({dest: uploadDir});

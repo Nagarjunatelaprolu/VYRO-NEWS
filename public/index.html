@@ -1,28 +1,123 @@
-<!doctype html><html lang="te"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VYRO NEWS</title><link rel="stylesheet" href="/shared.css?v=4"></head><body>
-<div class="topline"><div class="container inner"><span>ఆదివారం, 23 ఆగస్టు 2026 | హైదరాబాద్ 29°C</span><span>తెలుగు | English | f | X | ◎ | ▶</span></div></div>
-<header class="header"><div class="container head-main"><a class="brand" href="/"><span class="v">V</span>YRO <span class="news">NEWS</span><div class="tagline">TELUGU NEWS PORTAL</div></a><div class="ad"><div><b>FOR ADS ON VYRO NEWS</b><br>REACH MILLIONS OF READERS</div><button>CONTACT US</button></div></div></header>
-<nav class="nav"><div class="container inner"><span class="menu">☰</span><a class="active" href="/">హోమ్</a><a href="#andhra">ఆంధ్రప్రదేశ్</a><a href="#telangana">తెలంగాణ</a><a href="#cinema">సినిమా</a><a href="#national">భారతదేశం</a><a href="#business">బిజినెస్</a><a href="#sports">స్పోర్ట్స్</a><a href="#videos">వీడియోలు</a><a href="/admin/login.html">Admin</a></div></nav>
-<div class="container"><div class="breaking"><div class="label">BREAKING NEWS ⚡</div><div class="ticker" id="ticker"></div></div></div>
-<main class="container"><section class="hero-grid" id="hero"></section>
-<div class="section-title"><h2>🔥 TRENDING NOW</h2><a href="#latest">View All →</a></div><section class="trending" id="trending"></section>
-<div class="section-title" id="latest"><h2>తాజా వార్తలు</h2><a href="#latest">View All →</a></div><section class="news-list" id="latest-list"></section>
-<div class="section-title" id="andhra"><h2>ఆంధ్రప్రదేశ్</h2><a href="#latest">View All →</a></div><section class="category-grid" id="andhra-grid"></section>
-<div class="section-title" id="telangana"><h2>తెలంగాణ</h2><a href="#latest">View All →</a></div><section class="category-grid" id="telangana-grid"></section>
-<div class="section-title" id="cinema"><h2>సినిమా</h2><a href="#latest">View All →</a></div><section class="category-grid" id="cinema-grid"></section>
-<div class="section-title" id="sports"><h2>స్పోర్ట్స్</h2><a href="#latest">View All →</a></div><section class="category-grid" id="sports-grid"></section>
-<div class="section-title" id="videos"><h2>▶ VYRO NEWS VIDEOS</h2><a href="#latest">View All →</a></div><section class="video-strip" id="video-strip"></section>
-<section class="alert"><h2>GET LATEST NEWS ALERTS</h2><div>Subscribe and get breaking news alerts on your mobile</div><input placeholder="Enter your mobile number"><button>SUBSCRIBE</button></section></main>
-<footer class="footer"><div class="container footer-grid"><div><div class="brand"><span class="v">V</span>YRO <span class="news">NEWS</span></div><p>తెలుగు రాష్ట్రాలు, దేశం, సినిమా, స్పోర్ట్స్ మరియు ప్రపంచ వార్తలను వేగంగా మీ ముందుకు తీసుకొచ్చే VYRO NEWS.</p></div><div><h3>QUICK LINKS</h3><a href="/">హోమ్</a><a href="#andhra">ఆంధ్రప్రదేశ్</a><a href="#telangana">తెలంగాణ</a><a href="#cinema">సినిమా</a><a href="#sports">స్పోర్ట్స్</a></div><div><h3>CATEGORIES</h3><a href="#national">భారతదేశం</a><a href="#business">బిజినెస్</a><a href="#videos">వీడియోలు</a></div><div><h3>COMPANY</h3><a href="#">About Us</a><a href="#">Contact Us</a><a href="#">Advertise With Us</a><a href="#">Privacy Policy</a><a href="#">Terms & Conditions</a></div></div><div class="container copy">© 2026 VYRO NEWS. All Rights Reserved.</div></footer>
+<!doctype html>
+<html lang="te">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VYRO NEWS | తెలుగు న్యూస్ పోర్టల్</title>
+<link rel="stylesheet" href="/shared.css">
+</head>
+<body>
+<div class="topline"><div class="container top-inner">
+  <span id="dateLine">ఆదివారం, 23 ఆగస్టు 2026 | హైదరాబాద్ 29°C</span>
+  <span>తెలుగు &nbsp;|&nbsp; English &nbsp; f &nbsp; X &nbsp; ◎ &nbsp; ▶</span>
+</div></div>
+
+<header class="header"><div class="container head-main">
+  <a class="brand" href="/">
+    <span class="v">V</span><span>YRO</span><span class="news">NEWS</span>
+    <small>TELUGU NEWS PORTAL</small>
+  </a>
+  <div class="ad-banner"><div><b>FOR ADS ON VYRO NEWS</b><strong>REACH MILLIONS OF READERS</strong></div><button>CONTACT US</button></div>
+</div></header>
+
+<nav class="nav"><div class="container nav-inner">
+  <button class="menu-btn" aria-label="menu">☰</button>
+  <a class="active" href="/">హోమ్</a><a href="#andhra">ఆంధ్రప్రదేశ్</a><a href="#telangana">తెలంగాణ</a>
+  <a href="#national">భారతదేశం</a><a href="#cinema">సినిమా</a><a href="#business">బిజినెస్</a>
+  <a href="#sports">స్పోర్ట్స్</a><a href="#videos">వీడియోలు</a>
+  <a class="admin-link" href="/admin/login.html">Admin</a>
+</div></nav>
+
+<div class="container"><div class="breaking"><div class="breaking-label">BREAKING NEWS ⚡</div><div class="ticker" id="ticker"></div></div></div>
+
+<main class="container">
+  <section class="hero-grid" id="hero"></section>
+
+  <div class="section-head"><h2>🔥 TRENDING NOW</h2><a href="#latest">View All →</a></div>
+  <section class="trending" id="trending"></section>
+
+  <div class="section-head" id="latest"><h2>తాజా వార్తలు</h2><a href="#latest">View All →</a></div>
+  <section class="latest-grid" id="latest-list"></section>
+
+  <div class="section-head" id="andhra"><h2>ఆంధ్రప్రదేశ్</h2><a href="#latest">View All →</a></div>
+  <section class="category-row" id="andhra-grid"></section>
+
+  <div class="section-head" id="telangana"><h2>తెలంగాణ</h2><a href="#latest">View All →</a></div>
+  <section class="category-row" id="telangana-grid"></section>
+
+  <div class="section-head" id="national"><h2>భారతదేశం</h2><a href="#latest">View All →</a></div>
+  <section class="category-row" id="national-grid"></section>
+
+  <div class="section-head" id="cinema"><h2>సినిమా</h2><a href="#latest">View All →</a></div>
+  <section class="category-row" id="cinema-grid"></section>
+
+  <div class="section-head" id="business"><h2>బిజినెస్</h2><a href="#latest">View All →</a></div>
+  <section class="category-row" id="business-grid"></section>
+
+  <div class="section-head" id="sports"><h2>స్పోర్ట్స్</h2><a href="#latest">View All →</a></div>
+  <section class="category-row" id="sports-grid"></section>
+
+  <div class="section-head" id="videos"><h2>▶ VYRO NEWS VIDEOS</h2><a href="#latest">View All →</a></div>
+  <section class="video-strip" id="video-strip"></section>
+
+  <section class="alert-box"><div><h2>GET LATEST NEWS ALERTS</h2><p>Subscribe and get breaking news alerts on your mobile</p></div>
+    <div class="subscribe"><input placeholder="Enter your mobile number"><button>SUBSCRIBE</button></div>
+  </section>
+</main>
+
+<footer class="footer"><div class="container footer-grid">
+  <div><div class="footer-brand"><span class="v">V</span>YRO <span class="news">NEWS</span><small>TELUGU NEWS PORTAL</small></div>
+    <p>తెలుగు రాష్ట్రాలు, దేశం, సినిమా, స్పోర్ట్స్ మరియు ప్రపంచ వార్తలను వేగంగా మీ ముందుకు తీసుకొచ్చే VYRO NEWS.</p></div>
+  <div><h3>QUICK LINKS</h3><a href="/">హోమ్</a><a href="#andhra">ఆంధ్రప్రదేశ్</a><a href="#telangana">తెలంగాణ</a><a href="#cinema">సినిమా</a><a href="#sports">స్పోర్ట్స్</a></div>
+  <div><h3>CATEGORIES</h3><a href="#national">భారతదేశం</a><a href="#business">బిజినెస్</a><a href="#videos">వీడియోలు</a></div>
+  <div><h3>COMPANY</h3><a href="#">About Us</a><a href="#">Contact Us</a><a href="#">Advertise With Us</a><a href="#">Privacy Policy</a><a href="#">Terms & Conditions</a></div>
+  <div><h3>CONTACT INFO</h3><p>☎ +91 93929 99999</p><p>✉ contact@vyro.news</p><p>⌖ Hyderabad, Telangana, India</p></div>
+</div><div class="container copy">© 2026 VYRO NEWS. All Rights Reserved.</div></footer>
+
 <script>
-const articles=[{"id": 1, "cat": "స్పోర్ట్స్", "tag": "BREAKING", "title": "శ్రీలంకతో రెండో టెస్టులో భారత్ బ్యాటింగ్.. సిరీస్‌పై టీమిండియా ఫోకస్", "desc": "కొలంబోలో రెండో, చివరి టెస్టు ప్రారంభమైంది. తొలి టెస్టులో 165 పరుగుల విజయంతో భారత్ 1-0 ఆధిక్యంలో ఉంది.", "img": "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1200&q=85", "url": "https://newsonair.gov.in/final-test-match-of-the-series-between-india-and-host-sri-lanka-underway-in-colombo/"}, {"id": 2, "cat": "సినిమా", "tag": "సినిమా", "title": "హైదరాబాద్‌లో ‘Toxic’ ప్రీ-రిలీజ్ ఈవెంట్‌లో ప్రమాదం.. ఇద్దరు విద్యార్థులకు గాయాలు", "desc": "ప్రీ-రిలీజ్ కార్యక్రమంలో సౌండ్ సెటప్ కూలడంతో ఇద్దరు విద్యార్థులు గాయపడినట్లు తాజా నివేదికలు చెబుతున్నాయి.", "img": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=85", "url": "https://timesofindia.indiatimes.com/entertainment/kannada/movies/news/two-students-injured-in-a-mishap-at-yashs-toxic-pre-release-event-sound-setup-collapses-at-hyderabad-venue/articleshow/133433473.cms"}, {"id": 3, "cat": "సినిమా", "tag": "లేటెస్ట్", "title": "‘Toxic’ ఈవెంట్‌లో యశ్ సందేశం.. నార్త్-సౌత్ పోలికలు వద్దంటూ పిలుపు", "desc": "సినిమా భాషలకు అతీతంగా ప్రేక్షకుల ఆదరణ, ప్రతిభ గురించి యశ్ మాట్లాడారు.", "img": "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=85", "url": "https://timesofindia.indiatimes.com/entertainment/kannada/movies/news/dont-take-cinema-too-seriously-yash-advises-students-and-sends-a-strong-message-on-north-south-comparison-at-toxic-pre-release-event/articleshow/133433720.cms"}, {"id": 4, "cat": "స్పోర్ట్స్", "tag": "క్రికెట్", "title": "రెండో టెస్టులో కుల్దీప్ యాదవ్‌కు చోటు లేదు.. సారంశ్ జైన్ అరంగేట్రం", "desc": "వైరల్ ఇన్ఫెక్షన్ నుంచి పూర్తిగా కోలుకోకపోవడంతో కుల్దీప్ ఆడటం లేదని తాజా నివేదికలు పేర్కొన్నాయి.", "img": "https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=1200&q=85", "url": "https://timesofindia.indiatimes.com/sports/cricket/india-vs-sri-lanka/why-kuldeep-yadav-is-not-playing-2nd-test-vs-sri-lanka-what-shubman-gill-and-bcci-said/articleshow/133434414.cms"}, {"id": 5, "cat": "స్పోర్ట్స్", "tag": "క్రికెట్", "title": "భారత్ 2-0తో సిరీస్ గెలుస్తుందా? గిల్, జైస్వాల్‌పై అందరి చూపు", "desc": "కొలంబో టెస్టులో విజయం సాధించి సిరీస్‌ను క్లీన్ స్వీప్ చేయాలని భారత్ లక్ష్యంగా పెట్టుకుంది.", "img": "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=900&q=80", "url": "https://timesofindia.indiatimes.com/sports/cricket/india-vs-sri-lanka/india-seek-2-0-sweep-shubman-gill-yashasvi-jaiswal-look-to-bounce-back-kuldeep-to-miss-out/articleshow/133433181.cms"}, {"id": 6, "cat": "ఆంధ్రప్రదేశ్", "tag": "ఏపీ", "title": "అమరావతి సీడ్ యాక్సెస్ రోడ్‌కు కీలక ముందడుగు.. భూసేకరణ అడ్డంకులు తొలగింపు", "desc": "అమరావతి మౌలిక సదుపాయాల పనుల్లో సీడ్ యాక్సెస్ రోడ్‌కు సంబంధించిన భూసేకరణపై కోర్టు పరిణామాలు కీలకంగా మారాయి.", "img": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=85", "url": "https://telugu.abplive.com/andhra-pradesh/amravati/amaravati-seed-access-road-land-acquisition-ap-high-court-verdict-latest-update-256157"}, {"id": 7, "cat": "తెలంగాణ", "tag": "హైదరాబాద్", "title": "తెలంగాణలో ప్రభుత్వ పాఠశాలలకు కార్పొరేట్ CSR మద్దతు", "desc": "ప్రభుత్వ పాఠశాలల్లో మౌలిక వసతుల బలోపేతానికి పలు సంస్థలు CSR నిధులతో సహకరించనున్నాయి.", "img": "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=85", "url": "https://telugu.abplive.com/photo-gallery/telangana/hyderabad-telangana-govt-raheja-group-ramky-and-yashoda-foundations-to-fund-school-infra-projects-under-csr-248192"}, {"id": 8, "cat": "జాతీయ", "tag": "ఇండియా", "title": "ఈరోజు టాప్ 10 వార్తలు.. దేశవ్యాప్తంగా కీలక పరిణామాలు", "desc": "ఆగస్టు 23 ఉదయం ప్రధాన వార్తల సమగ్ర బులెటిన్‌ను ABP దేశం అందించింది.", "img": "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=85", "url": "https://telugu.abplive.com/news/todays-top-10-news-headlines-today-abp-desam-morning-headlines-23-august-2026-top-news-headlines-updates-telugu-news-257006"}, {"id": 9, "cat": "స్పోర్ట్స్", "tag": "దేశవాళీ", "title": "దులీప్ ట్రోఫీలో వైభవ్ సూర్యవంశీకి 8 పరుగులకే ఔట్", "desc": "15 ఏళ్ల ఓపెనర్ తొలి రెడ్-బాల్ ఇన్నింగ్స్‌లో 8 పరుగులకు వెనుదిరిగాడు.", "img": "https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=900&q=80", "url": "https://indianexpress.com/article/sports/cricket/duleep-trophy-vaibhav-sooryavanshi-falls-for-8-runs-10845702/lite/"}, {"id": 10, "cat": "సినిమా", "tag": "టాలీవుడ్", "title": "‘Irumudi’ రెండో రోజు కలెక్షన్స్.. ఇండియా నెట్ ₹31.40 కోట్లకు", "desc": "రవితేజ నటించిన చిత్రం రెండో రోజున స్వల్ప వృద్ధిని నమోదు చేసిందని బాక్సాఫీస్ నివేదిక తెలిపింది.", "img": "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=900&q=80", "url": "https://timesofindia.indiatimes.com/entertainment/telugu/movies/news/irumudi-box-office-collections-day-2-ravi-tejas-film-records-5-2-growth-india-net-reaches-rs-31-40-cr/articleshow/133433161.cms"}];
-const esc=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-const L=a=>`<a href="/news.html?id=${a.id}">`;
-const hero=articles[0];
-document.getElementById("hero").innerHTML=`<a class="hero" href="/news.html?id=${hero.id}"><img src="${hero.img}" alt=""><div class="content"><span class="badge">${esc(hero.tag)}</span><h1>${esc(hero.title)}</h1><p>${esc(hero.desc)}</p></div></a><div class="side-news">${articles.slice(1,5).map(a=>`<a class="side" href="/news.html?id=${a.id}"><img src="${a.img}" alt=""><div class="txt"><span class="cat">${esc(a.cat)}</span><h3>${esc(a.title)}</h3></div></a>`).join("")}</div>`;
-document.getElementById("ticker").innerHTML=articles.slice(0,6).map(a=>L(a)+esc(a.title)+"</a>").join(" • ");
-document.getElementById("trending").innerHTML=articles.slice(1,6).map((a,i)=>`<a class="trend" href="/news.html?id=${a.id}"><span class="num">${i+1}</span><img src="${a.img}" alt=""><div><h4>${esc(a.title)}</h4><small>${esc(a.cat)}</small></div></a>`).join("");
-document.getElementById("latest-list").innerHTML=articles.map(a=>`<a class="story" href="/news.html?id=${a.id}"><img src="${a.img}" alt=""><div><small>${esc(a.cat)} • 23 ఆగస్టు 2026</small><h3>${esc(a.title)}</h3><p>${esc(a.desc)}</p></div></a>`).join("");
-function fill(id,cat){let xs=articles.filter(a=>a.cat===cat);let blocks=[xs,articles.filter(a=>a.cat!==cat).slice(0,4),articles.slice(0,4),articles.slice(4,8)];document.getElementById(id).innerHTML=blocks.map((list,i)=>`<div class="category"><h3>${i===0?cat:i===1?"మరిన్ని వార్తలు":i===2?"టాప్ స్టోరీస్":"వైరల్"}</h3>${list.map(a=>`<a class="mini" href="/news.html?id=${a.id}"><img src="${a.img}" alt=""><div><h4>${esc(a.title)}</h4><small>${esc(a.cat)}</small></div></a>`).join("")}</div>`).join("")}
-fill("andhra-grid","ఆంధ్రప్రదేశ్");fill("telangana-grid","తెలంగాణ");fill("cinema-grid","సినిమా");fill("sports-grid","స్పోర్ట్స్");
-document.getElementById("video-strip").innerHTML=articles.slice(0,5).map(a=>`<a class="video" href="/news.html?id=${a.id}"><img src="${a.img}" alt=""><span class="play">▶</span><h4>${esc(a.title)}</h4></a>`).join("");
-</script></body></html>
+const fallback = [
+{id:1,cat:"స్పోర్ట్స్",tag:"BREAKING",title:"శ్రీలంకతో రెండో టెస్టులో భారత్ 2-0 సిరీస్‌పై ఫోకస్",desc:"కొలంబోలో రెండో, చివరి టెస్టులో భారత్ విజయంతో సిరీస్‌ను క్లీన్ స్వీప్ చేయాలని చూస్తోంది.",img:"https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1400&q=85"},
+{id:2,cat:"సినిమా",tag:"సినిమా",title:"‘Irumudi’ బాక్సాఫీస్ జోరు.. రెండో రోజూ మంచి వసూళ్లు",desc:"రవితేజ నటించిన చిత్రం రెండో రోజున కూడా బలమైన వసూళ్లు సాధించినట్లు ట్రేడ్ రిపోర్టులు చెబుతున్నాయి.",img:"https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1000&q=85"},
+{id:3,cat:"సినిమా",tag:"లేటెస్ట్",title:"‘Toxic’ ఈవెంట్‌లో యశ్ సందేశం.. నార్త్-సౌత్ పోలికలు వద్దంటూ పిలుపు",desc:"సినిమా భాషలకు అతీతంగా ప్రేక్షకుల ఆదరణ గురించి యశ్ మాట్లాడారు.",img:"https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1000&q=85"},
+{id:4,cat:"స్పోర్ట్స్",tag:"క్రికెట్",title:"భారత్-శ్రీలంక రెండో టెస్ట్.. గిల్, జైస్వాల్‌పై అందరి చూపు",desc:"తొలి టెస్టు విజయంతో ఊపుమీదున్న భారత్ రెండో మ్యాచ్‌లోనూ ఆధిపత్యం కోసం చూస్తోంది.",img:"https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=1000&q=85"},
+{id:5,cat:"స్పోర్ట్స్",tag:"దేశవాళీ",title:"దులీప్ ట్రోఫీలో వైభవ్ సూర్యవంశీకి 8 పరుగులకే ఔట్",desc:"యువ ఓపెనర్ రెడ్-బాల్ క్రికెట్‌లో తొలి ఇన్నింగ్స్‌లో 8 పరుగులకు వెనుదిరిగాడు.",img:"https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1000&q=85"},
+{id:6,cat:"ఆంధ్రప్రదేశ్",tag:"ఏపీ",title:"అమరావతి అభివృద్ధి పనులపై కీలక పరిణామాలు.. వేగంగా కొనసాగుతున్న ప్రాజెక్టులు",desc:"రాజధాని ప్రాంతంలో మౌలిక వసతుల పనులకు సంబంధించిన తాజా పరిణామాలు.",img:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=85"},
+{id:7,cat:"తెలంగాణ",tag:"హైదరాబాద్",title:"హైదరాబాద్‌లో ప్రభుత్వ పాఠశాలలకు CSR మద్దతు.. మౌలిక వసతులపై దృష్టి",desc:"పాఠశాలల్లో మౌలిక వసతుల బలోపేతానికి CSR కార్యక్రమాలు కొనసాగుతున్నాయి.",img:"https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=85"},
+{id:8,cat:"జాతీయ",tag:"ఇండియా",title:"దేశవ్యాప్తంగా నేటి ముఖ్య వార్తలు.. కీలక పరిణామాలపై ఫోకస్",desc:"ఆగస్టు 23 ఉదయం ప్రధాన జాతీయ వార్తల సమగ్ర అప్‌డేట్స్.",img:"https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1000&q=85"},
+{id:9,cat:"సినిమా",tag:"టాలీవుడ్",title:"టాలీవుడ్‌లో కొత్త ప్రాజెక్టులపై ఆసక్తికర అప్‌డేట్స్",desc:"కొత్త సినిమాలు, షూటింగ్స్, విడుదల తేదీలపై తాజా సమాచారం.",img:"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1000&q=85"},
+{id:10,cat:"బిజినెస్",tag:"బిజినెస్",title:"మార్కెట్లలో పెట్టుబడిదారుల దృష్టి.. ఈ వారం కీలక పరిణామాలు",desc:"దేశీయ మార్కెట్లు, పెట్టుబడులు, వ్యాపార రంగానికి సంబంధించిన తాజా అప్‌డేట్స్.",img:"https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1000&q=85"}
+];
+
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+const imgOf=a=>a.img||a.image_url||a.image||"https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1000&q=85";
+const titleOf=a=>a.title||"VYRO NEWS";
+const catOf=a=>a.cat||a.category||"తాజా వార్తలు";
+const descOf=a=>a.desc||a.content||"VYRO NEWS తాజా వార్తల అప్‌డేట్.";
+const linkOf=a=>a.id?`/news.html?id=${encodeURIComponent(a.id)}`:"#";
+
+async function getNews(){
+  try{
+    const r=await fetch("/api/news",{cache:"no-store"});
+    if(!r.ok) throw new Error("api");
+    const d=await r.json();
+    return Array.isArray(d)&&d.length?d:fallback;
+  }catch(e){return fallback;}
+}
+function render(articles){
+  const hero=articles[0];
+  document.getElementById("hero").innerHTML =
+  `<a class="hero" href="${linkOf(hero)}"><img src="${imgOf(hero)}" alt=""><div class="hero-content"><span class="badge">${esc(hero.tag||"TOP STORY")}</span><h1>${esc(titleOf(hero))}</h1><p>${esc(descOf(hero))}</p></div></a>
+   <div class="side-news">${articles.slice(1,5).map(a=>`<a class="side" href="${linkOf(a)}"><img src="${imgOf(a)}"><div><span class="cat">${esc(catOf(a))}</span><h3>${esc(titleOf(a))}</h3></div></a>`).join("")}</div>`;
+  document.getElementById("ticker").innerHTML=articles.slice(0,7).map(a=>`<a href="${linkOf(a)}">${esc(titleOf(a))}</a>`).join(" <b>•</b> ");
+  document.getElementById("trending").innerHTML=articles.slice(1,7).map((a,i)=>`<a class="trend" href="${linkOf(a)}"><span class="num">${i+1}</span><img src="${imgOf(a)}"><div><h4>${esc(titleOf(a))}</h4><small>${esc(catOf(a))}</small></div></a>`).join("");
+  document.getElementById("latest-list").innerHTML=articles.slice(0,10).map(a=>`<a class="story" href="${linkOf(a)}"><img src="${imgOf(a)}"><div><small>${esc(catOf(a))} • తాజా</small><h3>${esc(titleOf(a))}</h3><p>${esc(descOf(a))}</p></div></a>`).join("");
+  ["ఆంధ్రప్రదేశ్","తెలంగాణ","జాతీయ","సినిమా","బిజినెస్","స్పోర్ట్స్"].forEach(cat=>{
+    const id={"ఆంధ్రప్రదేశ్":"andhra","తెలంగాణ":"telangana","జాతీయ":"national","సినిమా":"cinema","బిజినెస్":"business","స్పోర్ట్స్":"sports"}[cat];
+    const xs=articles.filter(a=>catOf(a)===cat);
+    const list=(xs.length?xs:articles).slice(0,4);
+    document.getElementById(id+"-grid").innerHTML=list.map(a=>`<a class="mini" href="${linkOf(a)}"><img src="${imgOf(a)}"><div><small>${esc(catOf(a))}</small><h3>${esc(titleOf(a))}</h3></div></a>`).join("");
+  });
+  document.getElementById("video-strip").innerHTML=articles.slice(0,5).map(a=>`<a class="video" href="${linkOf(a)}"><div class="video-img"><img src="${imgOf(a)}"><span>▶</span></div><h4>${esc(titleOf(a))}</h4></a>`).join("");
+}
+getNews().then(render);
+</script>
+</body></html>

@@ -47,6 +47,9 @@ if (!existing) {
 app.use(cors());
 app.use(express.json({limit:"3mb"}));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+// Serve VYRO NEWS website
+app.use(express.static(path.join(__dirname, "../public")));
+app.use("/admin", express.static(path.join(__dirname, "../admin")));
 const uploadDir = path.join(__dirname, "uploads");
 fs.mkdirSync(uploadDir, {recursive:true});
 const upload = multer({dest: uploadDir});

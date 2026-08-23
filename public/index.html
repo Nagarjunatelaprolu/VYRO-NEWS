@@ -3,81 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>VYRO NEWS</title>
-
   <link rel="stylesheet" href="/shared.css">
-
-  <style>
-    .news-image {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .story {
-      overflow: hidden;
-    }
-
-    .story-content {
-      padding: 16px;
-    }
-
-    .story-content h3 {
-      margin: 8px 0;
-    }
-
-    .story-content p {
-      margin: 0;
-    }
-
-    .hero-image {
-      width: 100%;
-      max-height: 430px;
-      object-fit: cover;
-      margin-top: 20px;
-      border-radius: 14px;
-    }
-
-    .hero-content {
-      padding: 10px 0 25px;
-    }
-
-    .hero-content h1 {
-      margin-bottom: 10px;
-    }
-
-    .meta {
-      opacity: .7;
-      font-size: 13px;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 5px;
-      font-size: 12px;
-      font-weight: 700;
-      background: #e00000;
-      color: #fff;
-    }
-
-    .empty {
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .error {
-      padding: 30px 20px;
-      text-align: center;
-    }
-
-    .loading {
-      padding: 30px 20px;
-      text-align: center;
-    }
-  </style>
 </head>
 
 <body>
@@ -87,31 +14,20 @@
     <span class="v">V</span>YRO <b>NEWS</b>
   </div>
 
-  <a class="btn red" href="/admin/login.html">
-    Admin
-  </a>
+  <a class="btn red" href="/admin/login.html">Admin</a>
 </header>
 
-
-<!-- BREAKING NEWS TICKER -->
-<div class="ticker" id="ticker">
-  BREAKING NEWS
+<!-- BREAKING NEWS -->
+<div class="ticker">
+  <strong>BREAKING NEWS</strong>
+  <span id="tickerText">Latest Telugu News Updates</span>
 </div>
-
 
 <!-- HERO -->
 <section class="hero">
-
-  <div class="container hero-content">
+  <div class="container">
 
     <div id="heroBadge"></div>
-
-    <img
-      id="heroImage"
-      class="hero-image"
-      style="display:none"
-      alt="VYRO NEWS"
-    >
 
     <h1 id="heroTitle">
       VYRO NEWS
@@ -121,27 +37,18 @@
       తెలుగు రాష్ట్రాల తాజా వార్తలు
     </p>
 
-    <div id="heroMeta" class="meta"></div>
-
   </div>
-
 </section>
 
-
-<!-- LATEST NEWS -->
+<!-- MAIN CONTENT -->
 <main class="container">
 
   <section class="section">
 
-    <h2>
-      Latest News
-    </h2>
+    <h2>Latest News</h2>
 
-    <div
-      class="cards"
-      id="cards"
-    >
-      <div class="loading">
+    <div class="cards" id="cards">
+      <div class="empty">
         News loading...
       </div>
     </div>
@@ -153,47 +60,235 @@
 
 <script>
 
-const API = "/api/news";
-
-
-/* --------------------------------
-   DATE FORMAT
--------------------------------- */
-
-function formatDate(date) {
-
-  if (!date) return "";
+async function loadNews() {
 
   try {
 
-    return new Date(date).toLocaleString(
-      "te-IN",
-      {
-        dateStyle: "medium",
-        timeStyle: "short"
-      }
+    const response = await fetch("/api/news");
+
+    if (!response.ok) {
+      throw new Error("News API failed");
+    }
+
+    let news = await response.json();
+
+    /*
+      Latest news first
+    */
+    news.sort((a, b) =>
+      new Date(b.created_at) - new Date(a.created_at)
     );
 
-  } catch {
 
-    return date;
+    if (!news.length) {
+
+      loadDemoNews();
+
+      return;
+    }
+
+
+    renderNews(news);
+
+  } catch (error) {
+
+    console.error(error);
+
+    /*
+      API unavailable అయితే demo news
+    */
+    loadDemoNews();
 
   }
 
 }
 
 
-/* --------------------------------
-   ESCAPE HTML
--------------------------------- */
+/* =========================
+   RENDER NEWS
+========================= */
 
-function escapeHTML(value) {
+function renderNews(news) {
 
-  if (value === null || value === undefined) {
-    return "";
+  const heroTitle = document.getElementById("heroTitle");
+  const heroText = document.getElementById("heroText");
+  const heroBadge = document.getElementById("heroBadge");
+  const tickerText = document.getElementById("tickerText");
+  const cards = document.getElementById("cards");
+
+
+  const latest = news[0];
+
+
+  /* HERO */
+
+  heroTitle.textContent = latest.title;
+
+  heroText.textContent = latest.content;
+
+
+  if (latest.breaking) {
+
+    heroBadge.innerHTML =
+      '<span class="badge">BREAKING NEWS</span>';
+
+  } else {
+
+    heroBadge.innerHTML =
+      '<span class="badge">LATEST NEWS</span>';
+
   }
 
-  return String(value)
+
+  /* TICKER */
+
+  const breaking = news
+    .filter(x => Number(x.breaking) === 1)
+    .slice(0, 5)
+    .map(x => x.title);
+
+  tickerText.textContent =
+    breaking.length
+      ? breaking.join("  •  ")
+      : news.slice(0, 5).map(x => x.title).join("  •  ");
+
+
+  /* CARDS */
+
+  cards.innerHTML = news.map(item => {
+
+    const date = item.created_at
+      ? new Date(item.created_at).toLocaleDateString(
+          "te-IN",
+          {
+            day: "2-digit",
+            month: "short",
+            year: "numeric"
+          }
+        )
+      : "";
+
+
+    const image = item.image_url
+      ? `<img src="${item.image_url}" alt="${escapeHtml(item.title)}">`
+      : "";
+
+
+    const badge = Number(item.breaking) === 1
+      ? `<span class="badge">BREAKING</span>`
+      : "";
+
+
+    return `
+
+      <article class="story">
+
+        ${image}
+
+        <div class="story-content">
+
+          ${badge}
+
+          <small>
+            ${escapeHtml(item.category)} • ${date}
+          </small>
+
+          <h3>
+            ${escapeHtml(item.title)}
+          </h3>
+
+          <p>
+            ${escapeHtml(item.content)}
+          </p>
+
+        </div>
+
+      </article>
+
+    `;
+
+  }).join("");
+
+}
+
+
+/* =========================
+   DEMO / STARTER NEWS
+========================= */
+
+function loadDemoNews() {
+
+  const news = [
+
+    {
+      id: 1,
+      title: "గచ్చిబౌలి భవనం కూలిన ఘటనపై దర్యాప్తు ముమ్మరం",
+      category: "తెలంగాణ",
+      content:
+        "హైదరాబాద్ గచ్చిబౌలిలో భవనం కూలిన ఘటనపై అధికారులు, పోలీసులు దర్యాప్తు కొనసాగిస్తున్నారు.",
+      breaking: 1,
+      created_at: new Date().toISOString()
+    },
+
+    {
+      id: 2,
+      title: "తెలుగు రాష్ట్రాల్లో వర్షాలపై వాతావరణ శాఖ అలర్ట్",
+      category: "ఆంధ్రప్రదేశ్ & తెలంగాణ",
+      content:
+        "తెలుగు రాష్ట్రాల్లో పలు ప్రాంతాల్లో వర్షాలు కురిసే అవకాశం ఉందని వాతావరణ శాఖ తాజా సూచనలు వెల్లడించింది.",
+      breaking: 1,
+      created_at:
+        new Date(Date.now() - 3600000).toISOString()
+    },
+
+    {
+      id: 3,
+      title: "ఆటో, క్యాబ్ సేవలపై సమ్మె ప్రభావం",
+      category: "తెలంగాణ",
+      content:
+        "తెలంగాణలో ఆటో, క్యాబ్ సేవలకు సంబంధించిన సమ్మెపై తాజా పరిణామాలు వెలువడ్డాయి.",
+      breaking: 0,
+      created_at:
+        new Date(Date.now() - 7200000).toISOString()
+    },
+
+    {
+      id: 4,
+      title: "రవితేజ ఇరుముడికి ప్రేక్షకుల నుంచి మంచి స్పందన",
+      category: "సినిమా",
+      content:
+        "రవితేజ నటించిన ఇరుముడి సినిమా బాక్సాఫీస్ వద్ద కొనసాగుతోంది. రెండో రోజు కలెక్షన్లలో వృద్ధి నమోదైనట్లు తాజా నివేదికలు చెబుతున్నాయి.",
+      breaking: 0,
+      created_at:
+        new Date(Date.now() - 10800000).toISOString()
+    },
+
+    {
+      id: 5,
+      title: "తెలుగు రాష్ట్రాల్లో విద్యార్థులకు సెలవులపై తాజా సమాచారం",
+      category: "ఎడ్యుకేషన్",
+      content:
+        "పాఠశాలలు, కళాశాలలకు సంబంధించిన సెలవులపై తెలుగు రాష్ట్రాల్లో తాజా సమాచారం వెలువడింది.",
+      breaking: 0,
+      created_at:
+        new Date(Date.now() - 14400000).toISOString()
+    }
+
+  ];
+
+
+  renderNews(news);
+
+}
+
+
+/* =========================
+   SECURITY
+========================= */
+
+function escapeHtml(text) {
+
+  return String(text || "")
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
@@ -203,229 +298,9 @@ function escapeHTML(value) {
 }
 
 
-/* --------------------------------
-   LOAD NEWS
--------------------------------- */
-
-async function loadNews() {
-
-  const ticker = document.getElementById("ticker");
-  const cards = document.getElementById("cards");
-
-  try {
-
-    const response = await fetch(API);
-
-    if (!response.ok) {
-      throw new Error("API request failed");
-    }
-
-    const news = await response.json();
-
-    const published = Array.isArray(news)
-      ? news
-      : [];
-
-
-    /* --------------------------------
-       NO NEWS
-    -------------------------------- */
-
-    if (!published.length) {
-
-      ticker.textContent = "VYRO NEWS";
-
-      cards.innerHTML = `
-        <div class="empty">
-          <h3>News త్వరలో అందుబాటులోకి వస్తుంది</h3>
-          <p>
-            Admin panel ద్వారా మొదటి వార్తను publish చేయండి.
-          </p>
-        </div>
-      `;
-
-      return;
-
-    }
-
-
-    /* --------------------------------
-       HERO NEWS
-    -------------------------------- */
-
-    const hero = published[0];
-
-    const heroTitle =
-      document.getElementById("heroTitle");
-
-    const heroText =
-      document.getElementById("heroText");
-
-    const heroBadge =
-      document.getElementById("heroBadge");
-
-    const heroImage =
-      document.getElementById("heroImage");
-
-    const heroMeta =
-      document.getElementById("heroMeta");
-
-
-    heroTitle.textContent =
-      hero.title || "VYRO NEWS";
-
-    heroText.textContent =
-      hero.content || "";
-
-    heroMeta.textContent =
-      `${hero.category || "News"} • ${formatDate(hero.created_at)}`;
-
-
-    if (hero.breaking) {
-
-      heroBadge.innerHTML =
-        `<span class="badge">BREAKING NEWS</span>`;
-
-    } else {
-
-      heroBadge.innerHTML = "";
-
-    }
-
-
-    /* HERO IMAGE */
-
-    if (hero.image_url) {
-
-      heroImage.src = hero.image_url;
-
-      heroImage.style.display = "block";
-
-    } else {
-
-      heroImage.style.display = "none";
-
-    }
-
-
-    /* --------------------------------
-       BREAKING NEWS TICKER
-    -------------------------------- */
-
-    const breakingNews =
-      published.filter(
-        item => Number(item.breaking) === 1
-      );
-
-
-    if (breakingNews.length) {
-
-      ticker.textContent =
-        breakingNews
-          .slice(0, 5)
-          .map(item => item.title)
-          .join("  •  ");
-
-    } else {
-
-      ticker.textContent =
-        "VYRO NEWS • తెలుగు రాష్ట్రాల తాజా వార్తలు";
-
-    }
-
-
-    /* --------------------------------
-       NEWS CARDS
-    -------------------------------- */
-
-    cards.innerHTML =
-      published
-        .map(item => {
-
-          const image = item.image_url
-            ? `
-              <img
-                class="news-image"
-                src="${escapeHTML(item.image_url)}"
-                alt="${escapeHTML(item.title)}"
-                loading="lazy"
-              >
-            `
-            : "";
-
-
-          const breaking =
-            Number(item.breaking) === 1
-              ? `<span class="badge">BREAKING</span>`
-              : "";
-
-
-          return `
-
-            <article class="story">
-
-              ${image}
-
-              <div class="story-content">
-
-                ${breaking}
-
-                <div class="meta">
-                  ${escapeHTML(item.category || "News")}
-                  •
-                  ${formatDate(item.created_at)}
-                </div>
-
-                <h3>
-                  ${escapeHTML(item.title)}
-                </h3>
-
-                <p>
-                  ${escapeHTML(item.content)}
-                </p>
-
-              </div>
-
-            </article>
-
-          `;
-
-        })
-        .join("");
-
-
-  } catch (error) {
-
-    console.error(
-      "VYRO NEWS API ERROR:",
-      error
-    );
-
-
-    cards.innerHTML = `
-
-      <div class="error">
-
-        <h3>
-          News load అవ్వలేదు
-        </h3>
-
-        <p>
-          Please try again later.
-        </p>
-
-      </div>
-
-    `;
-
-  }
-
-}
-
-
-/* --------------------------------
+/* =========================
    START
--------------------------------- */
+========================= */
 
 loadNews();
 

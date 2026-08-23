@@ -1,1 +1,4 @@
-
+<!doctype html><html lang="te"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VYRO NEWS Admin Login</title><link rel="stylesheet" href="../shared.css"></head><body><div class="login"><div class="login-card"><div class="brand"><span class="v">V</span>YRO <b>NEWS</b></div><h2>Admin Login</h2><p class="muted">VYRO NEWS Content Management</p><input class="field" id="email" placeholder="Email"><input class="field" id="password" type="password" placeholder="Password"><button class="btn red" id="login">LOGIN</button><p class="muted" style="font-size:12px">Demo: admin@vyro.news / vyro123</p></div></div><script>
+document.getElementById("login").onclick=()=>{if(email.value.trim()==="admin@vyro.news"&&password.value==="vyro123"){sessionStorage.setItem("vyroAdmin","1");location.href="dashboard.html"}else alert("Invalid demo login")};
+password.addEventListener("keydown",e=>{if(e.key==="Enter")document.getElementById("login").click()});
+</script></body></html>

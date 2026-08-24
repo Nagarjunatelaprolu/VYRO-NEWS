@@ -1,123 +1,96 @@
 <!doctype html>
 <html lang="te">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>VYRO NEWS | తెలుగు న్యూస్ పోర్టల్</title>
-<link rel="stylesheet" href="/shared.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VYRO NEWS — తెలుగు న్యూస్ పోర్టల్</title>
+<meta name="description" content="VYRO NEWS — తాజా తెలుగు వార్తలు, సినిమా, స్పోర్ట్స్, ఆంధ్రప్రదేశ్, తెలంగాణ మరియు మరిన్ని.">
+<link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-<div class="topline"><div class="container top-inner">
-  <span id="dateLine">ఆదివారం, 23 ఆగస్టు 2026 | హైదరాబాద్ 29°C</span>
-  <span>తెలుగు &nbsp;|&nbsp; English &nbsp; f &nbsp; X &nbsp; ◎ &nbsp; ▶</span>
-</div></div>
+<div class="topline">
+  <div id="dateWeather">ఆగస్టు 24, 2026 | హైదరాబాద్ 29°C</div>
+  <div>తెలుగు &nbsp;|&nbsp; English &nbsp; f &nbsp; X &nbsp; ◎ &nbsp; ▶</div>
+</div>
 
-<header class="header"><div class="container head-main">
-  <a class="brand" href="/">
-    <span class="v">V</span><span>YRO</span><span class="news">NEWS</span>
+<header class="masthead">
+  <div class="logo">
+    <span class="logo-v">V</span><span>YRO</span>
+    <strong>NEWS</strong>
     <small>TELUGU NEWS PORTAL</small>
-  </a>
-  <div class="ad-banner"><div><b>FOR ADS ON VYRO NEWS</b><strong>REACH MILLIONS OF READERS</strong></div><button>CONTACT US</button></div>
-</div></header>
+  </div>
+  <div class="adbox">
+    <div><b>FOR ADS ON VYRO NEWS</b><br><span>REACH MILLIONS OF READERS</span></div>
+    <button>CONTACT US</button>
+  </div>
+</header>
 
-<nav class="nav"><div class="container nav-inner">
-  <button class="menu-btn" aria-label="menu">☰</button>
-  <a class="active" href="/">హోమ్</a><a href="#andhra">ఆంధ్రప్రదేశ్</a><a href="#telangana">తెలంగాణ</a>
-  <a href="#national">భారతదేశం</a><a href="#cinema">సినిమా</a><a href="#business">బిజినెస్</a>
-  <a href="#sports">స్పోర్ట్స్</a><a href="#videos">వీడియోలు</a>
-  <a class="admin-link" href="/admin/login.html">Admin</a>
-</div></nav>
+<nav class="nav">
+  <button class="menu" aria-label="Menu">☰</button>
+  <a class="active" href="#home">హోమ్</a>
+  <a href="#andhra">ఆంధ్రప్రదేశ్</a>
+  <a href="#telangana">తెలంగాణ</a>
+  <a href="#bharat">భారతదేశం</a>
+  <a href="#cinema">సినిమా</a>
+  <a href="#business">బిజినెస్</a>
+  <a href="#sports">స్పోర్ట్స్</a>
+  <a href="#videos">వీడియోలు</a>
+  <a class="admin" href="/admin/login.html">Admin</a>
+</nav>
 
-<div class="container"><div class="breaking"><div class="breaking-label">BREAKING NEWS ⚡</div><div class="ticker" id="ticker"></div></div></div>
+<div class="ticker">
+  <div class="breaking">BREAKING NEWS ⚡</div>
+  <div class="ticker-track" id="ticker">తాజా వార్తలు లోడ్ అవుతున్నాయి...</div>
+</div>
 
-<main class="container">
-  <section class="hero-grid" id="hero"></section>
+<main id="home" class="page">
+  <section class="lead-grid">
+    <article class="hero-card" id="heroCard"></article>
+    <section class="side-news" id="sideNews"></section>
+    <aside class="latest">
+      <div class="section-title"><span>◷</span> LATEST UPDATES</div>
+      <div id="latestList"></div>
+      <button class="outline-btn" id="allUpdates">VIEW ALL UPDATES →</button>
+    </aside>
+  </section>
 
-  <div class="section-head"><h2>🔥 TRENDING NOW</h2><a href="#latest">View All →</a></div>
-  <section class="trending" id="trending"></section>
+  <section class="trending">
+    <div class="section-title">🔥 TRENDING NOW</div>
+    <div class="trend-row" id="trending"></div>
+  </section>
 
-  <div class="section-head" id="latest"><h2>తాజా వార్తలు</h2><a href="#latest">View All →</a></div>
-  <section class="latest-grid" id="latest-list"></section>
+  <section class="category-grid">
+    <div class="cat" id="andhra"><h2>ఆంధ్రప్రదేశ్ <span>View All →</span></h2><div id="andhraList"></div></div>
+    <div class="cat" id="telangana"><h2>తెలంగాణ <span>View All →</span></h2><div id="telanganaList"></div></div>
+    <div class="cat" id="bharat"><h2>భారతదేశం <span>View All →</span></h2><div id="bharatList"></div></div>
+    <div class="cat" id="cinema"><h2>సినిమా <span>View All →</span></h2><div id="cinemaList"></div></div>
+    <div class="cat" id="sports"><h2>స్పోర్ట్స్ <span>View All →</span></h2><div id="sportsList"></div></div>
+  </section>
 
-  <div class="section-head" id="andhra"><h2>ఆంధ్రప్రదేశ్</h2><a href="#latest">View All →</a></div>
-  <section class="category-row" id="andhra-grid"></section>
-
-  <div class="section-head" id="telangana"><h2>తెలంగాణ</h2><a href="#latest">View All →</a></div>
-  <section class="category-row" id="telangana-grid"></section>
-
-  <div class="section-head" id="national"><h2>భారతదేశం</h2><a href="#latest">View All →</a></div>
-  <section class="category-row" id="national-grid"></section>
-
-  <div class="section-head" id="cinema"><h2>సినిమా</h2><a href="#latest">View All →</a></div>
-  <section class="category-row" id="cinema-grid"></section>
-
-  <div class="section-head" id="business"><h2>బిజినెస్</h2><a href="#latest">View All →</a></div>
-  <section class="category-row" id="business-grid"></section>
-
-  <div class="section-head" id="sports"><h2>స్పోర్ట్స్</h2><a href="#latest">View All →</a></div>
-  <section class="category-row" id="sports-grid"></section>
-
-  <div class="section-head" id="videos"><h2>▶ VYRO NEWS VIDEOS</h2><a href="#latest">View All →</a></div>
-  <section class="video-strip" id="video-strip"></section>
-
-  <section class="alert-box"><div><h2>GET LATEST NEWS ALERTS</h2><p>Subscribe and get breaking news alerts on your mobile</p></div>
-    <div class="subscribe"><input placeholder="Enter your mobile number"><button>SUBSCRIBE</button></div>
+  <section class="videos" id="videos">
+    <div class="section-title">VYRO NEWS VIDEOS <span>View All Videos →</span></div>
+    <div class="video-row" id="videoRow"></div>
+    <aside class="subscribe">
+      <h3>🔔 GET LATEST NEWS ALERTS</h3>
+      <p>Subscribe and get breaking news alerts to your mobile.</p>
+      <input placeholder="Enter your mobile number">
+      <button>SUBSCRIBE</button>
+      <small>🔒 We respect your privacy</small>
+    </aside>
   </section>
 </main>
 
-<footer class="footer"><div class="container footer-grid">
-  <div><div class="footer-brand"><span class="v">V</span>YRO <span class="news">NEWS</span><small>TELUGU NEWS PORTAL</small></div>
-    <p>తెలుగు రాష్ట్రాలు, దేశం, సినిమా, స్పోర్ట్స్ మరియు ప్రపంచ వార్తలను వేగంగా మీ ముందుకు తీసుకొచ్చే VYRO NEWS.</p></div>
-  <div><h3>QUICK LINKS</h3><a href="/">హోమ్</a><a href="#andhra">ఆంధ్రప్రదేశ్</a><a href="#telangana">తెలంగాణ</a><a href="#cinema">సినిమా</a><a href="#sports">స్పోర్ట్స్</a></div>
-  <div><h3>CATEGORIES</h3><a href="#national">భారతదేశం</a><a href="#business">బిజినెస్</a><a href="#videos">వీడియోలు</a></div>
-  <div><h3>COMPANY</h3><a href="#">About Us</a><a href="#">Contact Us</a><a href="#">Advertise With Us</a><a href="#">Privacy Policy</a><a href="#">Terms & Conditions</a></div>
-  <div><h3>CONTACT INFO</h3><p>☎ +91 93929 99999</p><p>✉ contact@vyro.news</p><p>⌖ Hyderabad, Telangana, India</p></div>
-</div><div class="container copy">© 2026 VYRO NEWS. All Rights Reserved.</div></footer>
+<footer>
+  <div class="footer-grid">
+    <div><div class="footer-logo">VYRO <b>NEWS</b></div><p>వాస్తవిక, నమ్మకమైన వార్తల కోసం...<br>మీ కోసం.. మీతో.. VYRO NEWS</p><div>f &nbsp; X &nbsp; ◎ &nbsp; ▶</div></div>
+    <div><h4>QUICK LINKS</h4><p>హోమ్<br>ఆంధ్రప్రదేశ్<br>తెలంగాణ<br>భారతదేశం<br>సినిమా<br>స్పోర్ట్స్<br>వీడియోలు</p></div>
+    <div><h4>CATEGORIES</h4><p>బ్రేకింగ్ న్యూస్<br>పాలిటిక్స్<br>ఎంటర్టైన్మెంట్<br>బిజినెస్<br>స్పోర్ట్స్<br>టెక్నాలజీ</p></div>
+    <div><h4>COMPANY</h4><p>About Us<br>Contact Us<br>Advertise With Us<br>Privacy Policy<br>Terms & Conditions</p></div>
+    <div><h4>CONTACT US</h4><p>☎ +91 93929 99999<br>✉ contact@vyro.news<br>⌖ Hyderabad, Telangana, India</p></div>
+  </div>
+  <div class="copyright">© 2026 VYRO NEWS. All Rights Reserved. <span>Made with ♥ for Telugu News Readers</span></div>
+</footer>
 
-<script>
-const fallback = [
-{id:1,cat:"స్పోర్ట్స్",tag:"BREAKING",title:"శ్రీలంకతో రెండో టెస్టులో భారత్ 2-0 సిరీస్‌పై ఫోకస్",desc:"కొలంబోలో రెండో, చివరి టెస్టులో భారత్ విజయంతో సిరీస్‌ను క్లీన్ స్వీప్ చేయాలని చూస్తోంది.",img:"https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1400&q=85"},
-{id:2,cat:"సినిమా",tag:"సినిమా",title:"‘Irumudi’ బాక్సాఫీస్ జోరు.. రెండో రోజూ మంచి వసూళ్లు",desc:"రవితేజ నటించిన చిత్రం రెండో రోజున కూడా బలమైన వసూళ్లు సాధించినట్లు ట్రేడ్ రిపోర్టులు చెబుతున్నాయి.",img:"https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1000&q=85"},
-{id:3,cat:"సినిమా",tag:"లేటెస్ట్",title:"‘Toxic’ ఈవెంట్‌లో యశ్ సందేశం.. నార్త్-సౌత్ పోలికలు వద్దంటూ పిలుపు",desc:"సినిమా భాషలకు అతీతంగా ప్రేక్షకుల ఆదరణ గురించి యశ్ మాట్లాడారు.",img:"https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1000&q=85"},
-{id:4,cat:"స్పోర్ట్స్",tag:"క్రికెట్",title:"భారత్-శ్రీలంక రెండో టెస్ట్.. గిల్, జైస్వాల్‌పై అందరి చూపు",desc:"తొలి టెస్టు విజయంతో ఊపుమీదున్న భారత్ రెండో మ్యాచ్‌లోనూ ఆధిపత్యం కోసం చూస్తోంది.",img:"https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=1000&q=85"},
-{id:5,cat:"స్పోర్ట్స్",tag:"దేశవాళీ",title:"దులీప్ ట్రోఫీలో వైభవ్ సూర్యవంశీకి 8 పరుగులకే ఔట్",desc:"యువ ఓపెనర్ రెడ్-బాల్ క్రికెట్‌లో తొలి ఇన్నింగ్స్‌లో 8 పరుగులకు వెనుదిరిగాడు.",img:"https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=1000&q=85"},
-{id:6,cat:"ఆంధ్రప్రదేశ్",tag:"ఏపీ",title:"అమరావతి అభివృద్ధి పనులపై కీలక పరిణామాలు.. వేగంగా కొనసాగుతున్న ప్రాజెక్టులు",desc:"రాజధాని ప్రాంతంలో మౌలిక వసతుల పనులకు సంబంధించిన తాజా పరిణామాలు.",img:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=85"},
-{id:7,cat:"తెలంగాణ",tag:"హైదరాబాద్",title:"హైదరాబాద్‌లో ప్రభుత్వ పాఠశాలలకు CSR మద్దతు.. మౌలిక వసతులపై దృష్టి",desc:"పాఠశాలల్లో మౌలిక వసతుల బలోపేతానికి CSR కార్యక్రమాలు కొనసాగుతున్నాయి.",img:"https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1000&q=85"},
-{id:8,cat:"జాతీయ",tag:"ఇండియా",title:"దేశవ్యాప్తంగా నేటి ముఖ్య వార్తలు.. కీలక పరిణామాలపై ఫోకస్",desc:"ఆగస్టు 23 ఉదయం ప్రధాన జాతీయ వార్తల సమగ్ర అప్‌డేట్స్.",img:"https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1000&q=85"},
-{id:9,cat:"సినిమా",tag:"టాలీవుడ్",title:"టాలీవుడ్‌లో కొత్త ప్రాజెక్టులపై ఆసక్తికర అప్‌డేట్స్",desc:"కొత్త సినిమాలు, షూటింగ్స్, విడుదల తేదీలపై తాజా సమాచారం.",img:"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1000&q=85"},
-{id:10,cat:"బిజినెస్",tag:"బిజినెస్",title:"మార్కెట్లలో పెట్టుబడిదారుల దృష్టి.. ఈ వారం కీలక పరిణామాలు",desc:"దేశీయ మార్కెట్లు, పెట్టుబడులు, వ్యాపార రంగానికి సంబంధించిన తాజా అప్‌డేట్స్.",img:"https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1000&q=85"}
-];
-
-const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
-const imgOf=a=>a.img||a.image_url||a.image||"https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1000&q=85";
-const titleOf=a=>a.title||"VYRO NEWS";
-const catOf=a=>a.cat||a.category||"తాజా వార్తలు";
-const descOf=a=>a.desc||a.content||"VYRO NEWS తాజా వార్తల అప్‌డేట్.";
-const linkOf=a=>a.id?`/news.html?id=${encodeURIComponent(a.id)}`:"#";
-
-async function getNews(){
-  try{
-    const r=await fetch("/api/news",{cache:"no-store"});
-    if(!r.ok) throw new Error("api");
-    const d=await r.json();
-    return Array.isArray(d)&&d.length?d:fallback;
-  }catch(e){return fallback;}
-}
-function render(articles){
-  const hero=articles[0];
-  document.getElementById("hero").innerHTML =
-  `<a class="hero" href="${linkOf(hero)}"><img src="${imgOf(hero)}" alt=""><div class="hero-content"><span class="badge">${esc(hero.tag||"TOP STORY")}</span><h1>${esc(titleOf(hero))}</h1><p>${esc(descOf(hero))}</p></div></a>
-   <div class="side-news">${articles.slice(1,5).map(a=>`<a class="side" href="${linkOf(a)}"><img src="${imgOf(a)}"><div><span class="cat">${esc(catOf(a))}</span><h3>${esc(titleOf(a))}</h3></div></a>`).join("")}</div>`;
-  document.getElementById("ticker").innerHTML=articles.slice(0,7).map(a=>`<a href="${linkOf(a)}">${esc(titleOf(a))}</a>`).join(" <b>•</b> ");
-  document.getElementById("trending").innerHTML=articles.slice(1,7).map((a,i)=>`<a class="trend" href="${linkOf(a)}"><span class="num">${i+1}</span><img src="${imgOf(a)}"><div><h4>${esc(titleOf(a))}</h4><small>${esc(catOf(a))}</small></div></a>`).join("");
-  document.getElementById("latest-list").innerHTML=articles.slice(0,10).map(a=>`<a class="story" href="${linkOf(a)}"><img src="${imgOf(a)}"><div><small>${esc(catOf(a))} • తాజా</small><h3>${esc(titleOf(a))}</h3><p>${esc(descOf(a))}</p></div></a>`).join("");
-  ["ఆంధ్రప్రదేశ్","తెలంగాణ","జాతీయ","సినిమా","బిజినెస్","స్పోర్ట్స్"].forEach(cat=>{
-    const id={"ఆంధ్రప్రదేశ్":"andhra","తెలంగాణ":"telangana","జాతీయ":"national","సినిమా":"cinema","బిజినెస్":"business","స్పోర్ట్స్":"sports"}[cat];
-    const xs=articles.filter(a=>catOf(a)===cat);
-    const list=(xs.length?xs:articles).slice(0,4);
-    document.getElementById(id+"-grid").innerHTML=list.map(a=>`<a class="mini" href="${linkOf(a)}"><img src="${imgOf(a)}"><div><small>${esc(catOf(a))}</small><h3>${esc(titleOf(a))}</h3></div></a>`).join("");
-  });
-  document.getElementById("video-strip").innerHTML=articles.slice(0,5).map(a=>`<a class="video" href="${linkOf(a)}"><div class="video-img"><img src="${imgOf(a)}"><span>▶</span></div><h4>${esc(titleOf(a))}</h4></a>`).join("");
-}
-getNews().then(render);
-</script>
-</body></html>
+<script src="/app.js"></script>
+</body>
+</html>

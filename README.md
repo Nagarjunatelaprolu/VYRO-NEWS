@@ -1,1 +1,0 @@
-VYRO NEWS final fixed version. Homepage content is embedded directly in public/app.js, so it does not depend on API/JSON fetch for initial rendering. Render: Build = npm install, Start = npm start.

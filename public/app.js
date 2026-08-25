@@ -67,3 +67,29 @@ function renderVideos(){
 }
 
 (async()=>{const news=await loadNews();render(news);renderVideos();})();
+
+const quickUpdates = [
+  ["10:42 AM","తెలుగు రాష్ట్రాల్లో తాజా పరిణామాలపై కీలక ప్రకటన"],
+  ["10:35 AM","సినిమా ఇండస్ట్రీలో కొత్త ప్రాజెక్ట్‌పై అధికారిక అప్‌డేట్"],
+  ["10:21 AM","హైదరాబాద్‌లో అభివృద్ధి పనులకు వేగం"],
+  ["10:08 AM","స్పోర్ట్స్‌లో నేటి ముఖ్యమైన వార్త ఇదే"]
+];
+const liveUpdates = [
+  ["10:42","తాజా వార్తలకు సంబంధించిన మరిన్ని వివరాలు అందుతున్నాయి"],
+  ["10:35","కీలక సమావేశం కొనసాగుతోంది.. అధికారులు ప్రకటనకు సిద్ధం"],
+  ["10:21","వైరల్ అవుతున్న అంశంపై అధికారిక స్పందన"],
+  ["10:08","మ్యాచ్‌కు ముందు జట్లలో కీలక మార్పులు"]
+];
+
+function renderCleanFeatures(){
+  const q=document.getElementById("quickUpdates");
+  const l=document.getElementById("liveUpdates");
+  if(q) q.innerHTML=quickUpdates.map(x=>`<div class="quick-item"><span class="quick-time">${x[0]}</span><h4>${x[1]}</h4></div>`).join("");
+  if(l) l.innerHTML=liveUpdates.map(x=>`<div class="live-item"><span class="live-dot"></span><span class="live-time">${x[0]}</span><h4>${x[1]}</h4></div>`).join("");
+  const btn=document.getElementById("pollBtn"), result=document.getElementById("pollResult");
+  if(btn) btn.onclick=()=>{
+    const selected=document.querySelector('input[name="vyroPoll"]:checked');
+    result.textContent=selected ? `మీ ఓటు నమోదు అయింది — ${selected.value}` : "ముందుగా ఒక option select చేయండి.";
+  };
+}
+renderCleanFeatures();

@@ -60,7 +60,32 @@
         </div>
       </article>
 
-      <div class="side-stories" id="sideStories"></div>
+      <div class="side-stories" id="sideStories">
+          <article class="side-card">
+            <img src="/images/news-parliament.jpg" alt="">
+            <div class="side-card-overlay">
+              <span class="badge">ఆంధ్రప్రదేశ్</span>
+              <h3>ఏపీ అసెంబ్లీ సమావేశాలు ప్రారంభం.. కీలక అంశాలపై చర్చ</h3>
+              <small>40 నిమిషాల క్రితం</small>
+            </div>
+          </article>
+          <article class="side-card">
+            <img src="/images/news-telangana.jpg" alt="">
+            <div class="side-card-overlay">
+              <span class="badge">తెలంగాణ</span>
+              <h3>తెలంగాణలో తాజా పరిణామాలు.. ప్రభుత్వం కీలక నిర్ణయం</h3>
+              <small>1 గంట క్రితం</small>
+            </div>
+          </article>
+          <article class="side-card">
+            <img src="/images/news-sports.jpg" alt="">
+            <div class="side-card-overlay">
+              <span class="badge">స్పోర్ట్స్</span>
+              <h3>IPL 2025: చెన్నై సూపర్ కింగ్స్‌కు అద్భుత విజయం</h3>
+              <small>2 గంటల క్రితం</small>
+            </div>
+          </article>
+        </div>
     </section>
 
     <section class="trending container" id="trending">
@@ -79,7 +104,33 @@
       <div class="short-track" id="shortTrack"></div>
     </section>
 
-    <section class="videos container" id="videos">
+    
+<section class="vyro-features container">
+  <div class="feature-column">
+    <div class="section-title"><span>⚡</span><h2>QUICK <b>UPDATES</b></h2></div>
+    <div class="quick-updates" id="quickUpdates"></div>
+  </div>
+
+  <div class="feature-column">
+    <div class="section-title"><span>🔴</span><h2>VYRO <b>LIVE</b></h2></div>
+    <div class="live-updates" id="liveUpdates"></div>
+  </div>
+
+  <div class="feature-column poll-column">
+    <div class="section-title"><span>📊</span><h2>POLL <b>OF THE DAY</b></h2></div>
+    <div class="poll-card">
+      <h3>ఈరోజు మీకు ఏ న్యూస్ కేటగిరీ ఎక్కువగా నచ్చుతుంది?</h3>
+      <label><input type="radio" name="vyroPoll" value="Cinema"> సినిమా</label>
+      <label><input type="radio" name="vyroPoll" value="Politics"> పాలిటిక్స్</label>
+      <label><input type="radio" name="vyroPoll" value="Sports"> స్పోర్ట్స్</label>
+      <label><input type="radio" name="vyroPoll" value="Entertainment"> ఎంటర్టైన్మెంట్</label>
+      <button id="pollBtn">VOTE</button>
+      <div id="pollResult" class="poll-result"></div>
+    </div>
+  </div>
+</section>
+
+<section class="videos container" id="videos">
       <div class="section-title video-title"><span>🔥</span><h2>VYRO NEWS <b>VIDEOS</b></h2><a href="#videos">View All →</a></div>
       <div class="video-layout">
         <div class="video-grid" id="videoGrid"></div>

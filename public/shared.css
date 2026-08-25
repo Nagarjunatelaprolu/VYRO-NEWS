@@ -79,3 +79,44 @@ footer{background:#c90000;color:#fff;margin-top:22px}.footer-inner{width:min(144
   .logo-image-link{width:245px;height:65px}
   .footer-logo-image-link{width:220px;height:90px}
 }
+
+/* VYRO NEWS: three-card banner panel */
+.hero-grid{align-items:stretch}
+.hero-side,.side-news,.right-panel,.side-panel{display:grid!important;grid-template-rows:repeat(3,minmax(0,1fr));gap:6px;height:100%;min-height:0;overflow:hidden}
+.side-card{position:relative;min-height:0;height:100%;overflow:hidden;border-radius:7px;background:#111}
+.side-card img{width:100%;height:100%;min-height:0;object-fit:cover;display:block}
+.side-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08) 20%,rgba(0,0,0,.82) 100%)}
+.side-card-overlay{position:absolute;z-index:2;left:18px;right:18px;bottom:14px;color:#fff}
+.side-card-overlay .badge{display:inline-block;background:#e00000;color:#fff;padding:6px 10px;font-weight:800;font-size:13px;margin-bottom:6px}
+.side-card-overlay h3{margin:0 0 5px;font-size:20px;line-height:1.25;color:#fff}
+.side-card-overlay small{font-size:12px;color:#eee}
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr!important}
+  .hero-side,.side-news,.right-panel,.side-panel{grid-template-rows:repeat(3,190px);height:auto}
+}
+
+/* ===== VYRO CLEAN FEATURES ===== */
+.vyro-features{display:grid;grid-template-columns:1.15fr 1.15fr .9fr;gap:14px;margin-top:24px}
+.feature-column{min-width:0}
+.feature-column .section-title{margin-bottom:9px}
+.quick-updates,.live-updates,.poll-card{border:1px solid #e3e3e3;border-radius:6px;background:#fff;overflow:hidden}
+.quick-item,.live-item{display:flex;gap:10px;padding:10px 12px;border-bottom:1px solid #eee;align-items:flex-start}
+.quick-item:last-child,.live-item:last-child{border-bottom:0}
+.quick-time{color:#d40000;font-size:11px;font-weight:900;min-width:62px}
+.quick-item h4,.live-item h4{font-size:13px;line-height:1.35;margin:0;font-weight:700}
+.live-dot{width:8px;height:8px;border-radius:50%;background:#d40000;flex:0 0 8px;margin-top:5px}
+.live-time{font-size:10px;color:#777;min-width:55px}
+.poll-card{padding:14px}
+.poll-card h3{font-size:14px;line-height:1.4;margin:0 0 9px}
+.poll-card label{display:block;font-size:12px;padding:5px 0;border-bottom:1px solid #f0f0f0}
+.poll-card input{accent-color:#d40000;margin-right:7px}
+.poll-card button{width:100%;margin-top:10px;background:#d40000;color:#fff;border:0;border-radius:4px;padding:9px;font-weight:900;cursor:pointer}
+.poll-result{font-size:11px;color:#555;margin-top:7px;min-height:14px}
+@media(max-width:1000px){
+  .vyro-features{grid-template-columns:1fr 1fr}
+  .poll-column{grid-column:1/-1}
+}
+@media(max-width:650px){
+  .vyro-features{grid-template-columns:1fr}
+  .poll-column{grid-column:auto}
+}

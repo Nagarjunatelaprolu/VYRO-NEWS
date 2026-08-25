@@ -1,16 +1,1 @@
-const express=require('express');
-const fs=require('fs');
-const path=require('path');
-const app=express();
-const PORT=process.env.PORT||3000;
-const DATA=path.join(__dirname,'data','news.json');
-app.use(express.json({limit:'2mb'}));
-app.use(express.static(path.join(__dirname,'public')));
-function read(){return JSON.parse(fs.readFileSync(DATA,'utf8'))}
-function write(d){fs.writeFileSync(DATA,JSON.stringify(d,null,2),'utf8')}
-app.get('/api/news',(req,res)=>res.json(read().sort((a,b)=>new Date(b.created_at||0)-new Date(a.created_at||0))));
-app.post('/api/news',(req,res)=>{const d=read();const n={id:Date.now(),status:'Published',created_at:new Date().toISOString(),...req.body};d.unshift(n);write(d);res.status(201).json(n)});
-app.put('/api/news/:id',(req,res)=>{const d=read();const i=d.findIndex(x=>String(x.id)===String(req.params.id));if(i<0)return res.status(404).json({error:'Not found'});d[i]={...d[i],...req.body,id:d[i].id};write(d);res.json(d[i])});
-app.delete('/api/news/:id',(req,res)=>{const d=read().filter(x=>String(x.id)!==String(req.params.id));write(d);res.json({ok:true})});
-app.get('*',(req,res)=>res.sendFile(path.join(__dirname,'public','index.html')));
-app.listen(PORT,()=>console.log(`VYRO NEWS running on ${PORT}`));
+const express=require("express"),fs=require("fs"),path=require("path"),app=express(),port=process.env.PORT||3000,file=path.join(__dirname,"data/news.json");app.use(express.json({limit:"2mb"}));app.use(express.static(path.join(__dirname,"public")));const read=()=>JSON.parse(fs.readFileSync(file,"utf8")),write=x=>fs.writeFileSync(file,JSON.stringify(x,null,2),"utf8");app.get("/api/news",(q,s)=>s.json(read()));app.post("/api/news",(q,s)=>{let d=read(),n={id:Date.now(),status:"Published",created_at:new Date().toISOString(),...q.body};d.unshift(n);write(d);s.status(201).json(n)});app.put("/api/news/:id",(q,s)=>{let d=read(),i=d.findIndex(x=>String(x.id)===String(q.params.id));if(i<0)return s.sendStatus(404);d[i]={...d[i],...q.body};write(d);s.json(d[i])});app.delete("/api/news/:id",(q,s)=>{write(read().filter(x=>String(x.id)!==String(q.params.id)));s.json({ok:true})});app.listen(port,()=>console.log("VYRO NEWS running on "+port));

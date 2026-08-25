@@ -1,68 +1,29 @@
-const fallback = [];
-let news = [];
-let slideIndex = 0;
-let tickerIndex = 0;
-let sliderTimer;
-
-const esc = v => String(v ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
-const date = n => { const d=new Date(n.created_at||''); return isNaN(d)?'తాజాగా':d.toLocaleDateString('te-IN',{day:'2-digit',month:'short'}); };
-const img = n => n.image || '/images/hero-cinema.svg';
-const key = n => { const c=(n.category||'').toLowerCase(); if(c.includes('సినిమ')||c.includes('movie')||c.includes('cinema'))return'cinema'; if(c.includes('క్రీడ')||c.includes('sport')||c.includes('cricket'))return'sports'; if(c.includes('తెలంగాణ')||c.includes('telangana'))return'telangana'; if(c.includes('ఆంధ్ర')||c.includes('andhra')||c.includes('ap'))return'andhra'; return'other'; };
-
-function setBg(el,n){el.style.backgroundImage=`url("${img(n)}")`;}
-function renderHero(){
-  if(!news.length)return;
-  const max=Math.max(1,news.length);
-  const a=news[slideIndex%max], b=news[(slideIndex+1)%max], c=news[(slideIndex+2)%max], d=news[(slideIndex+3)%max];
-  setBg(document.querySelector('#heroMain'),a); setBg(document.querySelector('#heroCenter'),b);
-  setBg(document.querySelector('#heroSmall1'),c); setBg(document.querySelector('#heroSmall2'),d);
-  heroTitle.textContent=a.title; heroDesc.textContent=a.content||''; heroMeta.textContent=`${a.category||'తాజా వార్త'} • ${date(a)}`;
-  centerCat.textContent=b.category||'వార్తలు'; centerMeta.textContent=`• ${date(b)}`; centerTitle.textContent=b.title; centerDesc.textContent=b.content||'';
-  small1Cat.textContent=c.category||'వార్తలు'; small1Meta.textContent=`• ${date(c)}`; small1Title.textContent=c.title;
-  small2Cat.textContent=d.category||'వార్తలు'; small2Meta.textContent=`• ${date(d)}`; small2Title.textContent=d.title;
-  heroDots.innerHTML=Array.from({length:Math.min(5,max)},(_,i)=>`<i class="${i===slideIndex%Math.min(5,max)?'active':''}"></i>`).join('');
-}
-function nextSlide(step=1){slideIndex=(slideIndex+step+news.length)%news.length;renderHero();}
-function renderTicker(){
-  const breaking=news.filter(n=>Number(n.breaking)===1); const list=(breaking.length?breaking:news).slice(0,8);
-  tickerTrack.innerHTML=list.map(n=>`<div class="ticker-item">${esc(n.title)}</div>`).join('');
-  tickerIndex=0;
-}
-function moveTicker(step=1){
-  const count=tickerTrack.children.length||1; tickerIndex=(tickerIndex+step+count)%count;
-  tickerTrack.style.transform=`translateX(-${tickerIndex*100}%)`;
-}
-function renderTrending(){
-  trending.innerHTML=news.slice(0,5).map((n,i)=>`<article><b>${i+1}</b><img src="${img(n)}" alt=""><div><h3>${esc(n.title)}</h3><small>• ${date(n)}</small></div></article>`).join('');
-}
-function renderCategories(){
-  const groups={andhra:[],telangana:[],cinema:[],sports:[]}; news.forEach(n=>{const k=key(n); if(groups[k])groups[k].push(n);});
-  Object.entries(groups).forEach(([k,arr])=>{
-    const list=arr.length?arr:news;
-    document.querySelector('#'+k+'List').innerHTML=list.slice(0,5).map(n=>`<article class="list"><img src="${img(n)}" alt=""><div><h3>${esc(n.title)}</h3><small>${date(n)}</small></div></article>`).join('');
-  });
-}
-function renderVideos(){
-  videosGrid.innerHTML=news.slice(0,5).map((n,i)=>`<article><div><img src="${img(n)}" alt=""><span>▶</span></div><h3>${esc(n.title)}</h3><small>0${i+1}:2${i}</small></article>`).join('');
-}
-function renderFeatures(){
-  const quick=["అమరావతిలో కీలక ప్రాజెక్టులపై సమీక్ష సమావేశం","తెలంగాణలో కొత్త దశలో అభివృద్ధి పనులు","సినిమా టికెట్ ధరలపై తాజా నిర్ణయం","భారత్-బంగ్లాదేశ్ మధ్య టెస్ట్ సిరీస్‌పై ఆసక్తి","హైదరాబాద్ ట్రాఫిక్ నియంత్రణకు కొత్త చర్యలు"];
-  quickUpdates.innerHTML=quick.map((t,i)=>`<div class="quick-row"><span class="time">10:${42-i*7} AM</span><h4>${t}</h4></div>`).join('');
-  const live=["అమరావతిలో తాజా ప్రకటన వెలువడింది","తెలంగాణలో కీలక సమావేశం కొనసాగుతోంది","చెన్నై సూపర్ కింగ్స్ మ్యాచ్‌పై తాజా సమాచారం","బాలీవుడ్ కొత్త ప్రాజెక్ట్‌పై అప్‌డేట్"];
-  liveUpdates.innerHTML=live.map((t,i)=>`<div class="live-row"><span class="live-dot"></span><span class="time">10:${42-i*8}</span><h4>${t}</h4></div>`).join('');
-}
-function render(){ news=(news||[]).filter(n=>String(n.status||'Published').toLowerCase()==='published').sort((a,b)=>new Date(b.created_at||0)-new Date(a.created_at||0)); if(!news.length) news=fallback; renderHero(); renderTicker(); renderTrending(); renderCategories(); renderVideos(); renderFeatures(); }
-async function load(){
-  try{const r=await fetch('/api/news',{cache:'no-store'}); if(!r.ok)throw new Error('API'); const d=await r.json(); news=Array.isArray(d)?d:[];}
-  catch(e){news=fallback;}
-  render();
-}
-document.addEventListener('DOMContentLoaded',()=>{
-  document.querySelector('#tickPrev').onclick=()=>moveTicker(-1);
-  document.querySelector('#tickNext').onclick=()=>moveTicker(1);
-  document.querySelector('#voteBtn').onclick=()=>{const x=document.querySelector('input[name="poll"]:checked'); voteMsg.textContent=x?`మీ ఓటు నమోదు అయింది — ${x.value}`:'ముందుగా ఒక option select చేయండి.';};
-  load();
-  sliderTimer=setInterval(()=>nextSlide(1),5000);
-  setInterval(()=>moveTicker(1),4500);
-  setInterval(load,60000);
-});
+const NEWS_DATA = [{"id": 100, "title": "పాన్ ఇండియా సినిమా ప్రాజెక్ట్‌పై భారీ ప్రకటన.. అభిమానుల్లో పెరిగిన అంచనాలు", "category": "సినిమా", "content": "పాన్ ఇండియా సినిమా ప్రాజెక్ట్‌పై భారీ ప్రకటన.. అభిమానుల్లో పెరిగిన అంచనాలుకు సంబంధించిన పూర్తి వివరాలు అందుతున్నాయి. అధికారిక వర్గాలు మరిన్ని వివరాలను త్వరలో వెల్లడించనున్నాయి. VYRO NEWS తాజా అప్‌డేట్స్‌ను అందిస్తుంది.", "image": "/images/hero1.svg", "breaking": 1, "featured": 1, "status": "Published", "created_at": "2026-08-25T10:45:00+05:30"}, {"id": 101, "title": "ఏపీ అసెంబ్లీలో కీలక అంశాలపై చర్చ.. మంత్రుల నుంచి తాజా ప్రకటనలు", "category": "ఆంధ్రప్రదేశ్", "content": "ఏపీ అసెంబ్లీలో కీలక అంశాలపై చర్చ.. మంత్రుల నుంచి తాజా ప్రకటనలుకు సంబంధించిన పూర్తి వివరాలు అందుతున్నాయి. అధికారిక వర్గాలు మరిన్ని వివరాలను త్వరలో వెల్లడించనున్నాయి. VYRO NEWS తాజా అప్‌డేట్స్‌ను అందిస్తుంది.", "image": "/images/hero2.svg", "breaking": 1, "featured": 1, "status": "Published", "created_at": "2026-08-25T10:38:00+05:30"}, {"id": 102, "title": "హైదరాబాద్ అభివృద్ధికి కొత్త ప్రణాళిక.. పలు ప్రాంతాల్లో పనులకు వేగం", "category": "తెలంగాణ", "content": "హైదరాబాద్ అభివృద్ధికి కొత్త ప్రణాళిక.. పలు ప్రాంతాల్లో పనులకు వేగంకు సంబంధించిన పూర్తి వివరాలు అందుతున్నాయి. అధికారిక వర్గాలు మరిన్ని వివరాలను త్వరలో వెల్లడించనున్నాయి. VYRO NEWS తాజా అప్‌డేట్స్‌ను అందిస్తుంది.", "image": "/images/hero3.svg", "breaking": 0, "featured": 1, "status": "Published", "created_at": "2026-08-25T10:31:00+05:30"}, {"id": 103, "title": "IPLలో ఉత్కంఠభరిత పోరు.. చివరి ఓవర్లో అద్భుత విజయం", "category": "క్రీడలు", "content": "IPLలో ఉత్కంఠభరిత పోరు.. చివరి ఓవర్లో అద్భుత విజయంకు సంబంధించిన పూర్తి వివరాలు అందుతున్నాయి. అధికారిక వర్గాలు మరిన్ని వివరాలను త్వరలో వెల్లడించనున్నాయి. VYRO NEWS తాజా అప్‌డేట్స్‌ను అందిస్తుంది.", "image": "/images/hero4.svg", "breaking": 0, "featured": 1, "status": "Published", "created_at": "2026-08-25T10:24:00+05:30"}, {"id": 104, "title": "ఆంధ్రప్రదేశ్‌లో అభివృద్ధి పనులకు వేగం.. కొత్త ప్రాజెక్టులపై సమీక్ష", "category": "ఆంధ్రప్రదేశ్", "content": "ఆంధ్రప్రదేశ్‌లో అభివృద్ధి పనులకు వేగం.. కొత్త ప్రాజెక్టులపై సమీక్షకు సంబంధించిన పూర్తి వివరాలు అందుతున్నాయి. అధికారిక వర్గాలు మరిన్ని వివరాలను త్వరలో వెల్లడించనున్నాయి. VYRO NEWS తాజా అప్‌డేట్స్‌ను అందిస్తుంది.", "image": "/images/andhra.svg", "breaking": 0, "featured": 1, "status": "Published", "created_at": "2026-08-25T09:45:00+05:30"}, {"id": 105, "title": "తెలంగాణలో కీలక ప్రభుత్వ నిర్ణయం.. అధికారికంగా వివరాలు వెల్లడి", "category": "తెలంగాణ", "content": "తెలంగాణలో కీలక ప్రభుత్వ నిర్ణయం.. అధికారికంగా వివరాలు వెల్లడికు సంబంధించిన పూర్తి వివరాలు అందుతున్నాయి. అధికారిక వర్గాలు మరిన్ని వివరాలను త్వరలో వెల్లడించనున్నాయి. VYRO NEWS తాజా అప్‌డేట్స్‌ను అందిస్తుంది.", "image": "/images/telangana.svg", "breaking": 0, "featured": 1, "status": "Published", "created_at": "2026-08-25T09:38:00+05:30"}, {"id": 106, "title": "కొత్త సినిమా ఫస్ట్ లుక్ విడుదల.. సోషల్ మీడియాలో వైరల్ అవుతున్న పోస్టర్", "category": "సినిమా", "content": "కొత్త సినిమా ఫస్ట్ లుక్ విడుదల.. సోషల్ మీడియాలో వైరల్ అవుతున్న పోస్టర్కు సంబంధించిన పూర్తి వివరాలు అందుతున్నాయి. అధికారిక వర్గాలు మరిన్ని వివరాలను త్వరలో వెల్లడించనున్నాయి. VYRO NEWS తాజా అప్‌డేట్స్‌ను అందిస్తుంది.", "image": "/images/cinema.svg", "breaking": 0, "featured": 0, "status": "Published", "created_at": "2026-08-25T09:31:00+05:30"}, {"id": 107, "title": "టీమ్‌లో కీలక మార్పులు.. తదుపరి మ్యాచ్‌పై ఆసక్తి పెంచిన అప్‌డేట్", "category": "క్రీడలు", "content": "టీమ్‌లో కీలక మార్పులు.. తదుపరి మ్యాచ్‌పై ఆసక్తి పెంచిన అప్‌డేట్కు సంబంధించిన పూర్తి వివరాలు అందుతున్నాయి. అధికారిక వర్గాలు మరిన్ని వివరాలను త్వరలో వెల్లడించనున్నాయి. VYRO NEWS తాజా అప్‌డేట్స్‌ను అందిస్తుంది.", "image": "/images/sports.svg", "breaking": 0, "featured": 0, "status": "Published", "created_at": "2026-08-25T09:24:00+05:30"}, {"id": 108, "title": "దేశవ్యాప్తంగా కీలక పరిణామం.. అధికారిక ప్రకటన కోసం ఎదురుచూపులు", "category": "జాతీయం", "content": "దేశవ్యాప్తంగా కీలక పరిణామం.. అధికారిక ప్రకటన కోసం ఎదురుచూపులుకు సంబంధించిన పూర్తి వివరాలు అందుతున్నాయి. అధికారిక వర్గాలు మరిన్ని వివరాలను త్వరలో వెల్లడించనున్నాయి. VYRO NEWS తాజా అప్‌డేట్స్‌ను అందిస్తుంది.", "image": "/images/national.svg", "breaking": 0, "featured": 0, "status": "Published", "created_at": "2026-08-25T08:45:00+05:30"}, {"id": 109, "title": "మార్కెట్లలో తాజా కదలికలు.. పెట్టుబడిదారుల దృష్టి కీలక రంగాలపై", "category": "బిజినెస్", "content": "మార్కెట్లలో తాజా కదలికలు.. పెట్టుబడిదారుల దృష్టి కీలక రంగాలపైకు సంబంధించిన పూర్తి వివరాలు అందుతున్నాయి. అధికారిక వర్గాలు మరిన్ని వివరాలను త్వరలో వెల్లడించనున్నాయి. VYRO NEWS తాజా అప్‌డేట్స్‌ను అందిస్తుంది.", "image": "/images/business.svg", "breaking": 0, "featured": 0, "status": "Published", "created_at": "2026-08-25T08:38:00+05:30"}, {"id": 110, "title": "AI రంగంలో కొత్త అప్‌డేట్.. టెక్ కంపెనీల నుంచి కీలక ప్రకటనలు", "category": "టెక్", "content": "AI రంగంలో కొత్త అప్‌డేట్.. టెక్ కంపెనీల నుంచి కీలక ప్రకటనలుకు సంబంధించిన పూర్తి వివరాలు అందుతున్నాయి. అధికారిక వర్గాలు మరిన్ని వివరాలను త్వరలో వెల్లడించనున్నాయి. VYRO NEWS తాజా అప్‌డేట్స్‌ను అందిస్తుంది.", "image": "/images/tech.svg", "breaking": 0, "featured": 0, "status": "Published", "created_at": "2026-08-25T08:31:00+05:30"}, {"id": 111, "title": "లైఫ్‌స్టైల్‌లో కొత్త ట్రెండ్.. యువతలో పెరుగుతున్న ఆసక్తి", "category": "లైఫ్ స్టైల్", "content": "లైఫ్‌స్టైల్‌లో కొత్త ట్రెండ్.. యువతలో పెరుగుతున్న ఆసక్తికు సంబంధించిన పూర్తి వివరాలు అందుతున్నాయి. అధికారిక వర్గాలు మరిన్ని వివరాలను త్వరలో వెల్లడించనున్నాయి. VYRO NEWS తాజా అప్‌డేట్స్‌ను అందిస్తుంది.", "image": "/images/lifestyle.svg", "breaking": 0, "featured": 0, "status": "Published", "created_at": "2026-08-25T08:24:00+05:30"}, {"id": 112, "title": "రాజధాని ప్రాంతంలో రోడ్డు పనులు.. ట్రాఫిక్‌కు తాత్కాలిక మార్పులు", "category": "సినిమా", "content": "రాజధాని ప్రాంతంలో రోడ్డు పనులు.. ట్రాఫిక్‌కు తాత్కాలిక మార్పులుకు సంబంధించిన పూర్తి వివరాలు అందుతున్నాయి. అధికారిక వర్గాలు మరిన్ని వివరాలను త్వరలో వెల్లడించనున్నాయి. VYRO NEWS తాజా అప్‌డేట్స్‌ను అందిస్తుంది.", "image": "/images/hero1.svg", "breaking": 0, "featured": 0, "status": "Published", "created_at": "2026-08-25T07:45:00+05:30"}, {"id": 113, "title": "హైదరాబాద్‌లో వర్షాలపై అధికారుల అప్రమత్తత.. కంట్రోల్ రూమ్ ఏర్పాటు", "category": "ఆంధ్రప్రదేశ్", "content": "హైదరాబాద్‌లో వర్షాలపై అధికారుల అప్రమత్తత.. కంట్రోల్ రూమ్ ఏర్పాటుకు సంబంధించిన పూర్తి వివరాలు అందుతున్నాయి. అధికారిక వర్గాలు మరిన్ని వివరాలను త్వరలో వెల్లడించనున్నాయి. VYRO NEWS తాజా అప్‌డేట్స్‌ను అందిస్తుంది.", "image": "/images/hero2.svg", "breaking": 0, "featured": 0, "status": "Published", "created_at": "2026-08-25T07:38:00+05:30"}, {"id": 114, "title": "సినీ అభిమానులకు గుడ్ న్యూస్.. షూటింగ్ షెడ్యూల్‌పై క్లారిటీ", "category": "తెలంగాణ", "content": "సినీ అభిమానులకు గుడ్ న్యూస్.. షూటింగ్ షెడ్యూల్‌పై క్లారిటీకు సంబంధించిన పూర్తి వివరాలు అందుతున్నాయి. అధికారిక వర్గాలు మరిన్ని వివరాలను త్వరలో వెల్లడించనున్నాయి. VYRO NEWS తాజా అప్‌డేట్స్‌ను అందిస్తుంది.", "image": "/images/hero3.svg", "breaking": 0, "featured": 0, "status": "Published", "created_at": "2026-08-25T07:31:00+05:30"}, {"id": 115, "title": "క్రికెట్‌లో కొత్త రికార్డు.. యువ ఆటగాడి అద్భుత ప్రదర్శన", "category": "క్రీడలు", "content": "క్రికెట్‌లో కొత్త రికార్డు.. యువ ఆటగాడి అద్భుత ప్రదర్శనకు సంబంధించిన పూర్తి వివరాలు అందుతున్నాయి. అధికారిక వర్గాలు మరిన్ని వివరాలను త్వరలో వెల్లడించనున్నాయి. VYRO NEWS తాజా అప్‌డేట్స్‌ను అందిస్తుంది.", "image": "/images/hero4.svg", "breaking": 0, "featured": 0, "status": "Published", "created_at": "2026-08-25T07:24:00+05:30"}];
+let news=NEWS_DATA.filter(n=>n.status==="Published"), slide=0;
+const $=id=>document.getElementById(id);
+const esc=x=>String(x??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));
+const img=n=>n.image||"/images/hero1.svg";
+const fmt=n=>{const d=new Date(n.created_at);return isNaN(d)?"తాజాగా":d.toLocaleDateString("te-IN",{day:"2-digit",month:"short"})};
+function setBg(id,n){const e=$(id);if(e)e.style.backgroundImage=`url("${img(n)}")`}
+function hero(){if(!news.length)return;const a=news[slide%news.length],b=news[(slide+1)%news.length],c=news[(slide+2)%news.length],d=news[(slide+3)%news.length];
+setBg("a",a);setBg("b",b);setBg("c",c);setBg("d",d);
+$("am").textContent=`${a.category} • ${fmt(a)}`;$("at").textContent=a.title;$("ad").textContent=a.content;
+$("bc").textContent=b.category;$("bm").textContent=`• ${fmt(b)}`;$("bt").textContent=b.title;$("bd").textContent=b.content;
+$("cc").textContent=c.category;$("cm").textContent=`• ${fmt(c)}`;$("ct").textContent=c.title;
+$("dc").textContent=d.category;$("dm").textContent=`• ${fmt(d)}`;$("dt").textContent=d.title;
+$("dots").innerHTML=[0,1,2,3,4].map(i=>`<i class="${i===slide%5?"active":""}"></i>`).join("")}
+function render(){hero();
+$("tickerTrack").innerHTML=news.slice(0,10).map(n=>`<div class="ticker-item">${esc(n.title)}</div>`).join("");
+$("trend").innerHTML=news.slice(0,5).map((n,i)=>`<article><b>${i+1}</b><img src="${img(n)}"><div><h3>${esc(n.title)}</h3><small>${fmt(n)}</small></div></article>`).join("");
+const cat=(id,name)=>{$(id).innerHTML=(news.filter(n=>n.category===name).length?news.filter(n=>n.category===name):news).slice(0,5).map(n=>`<div class="item"><img src="${img(n)}"><div><h3>${esc(n.title)}</h3><small>${fmt(n)}</small></div></div>`).join("")};
+cat("ap","ఆంధ్రప్రదేశ్");cat("ts","తెలంగాణ");cat("cin","సినిమా");cat("sport","క్రీడలు");
+$("vid").innerHTML=news.slice(2,8).map(n=>`<article><div class="video-thumb"><img src="${img(n)}"><span>▶</span></div><h3>${esc(n.title)}</h3></article>`).join("");
+const q=["అమరావతిలో కీలక ప్రాజెక్టులపై సమీక్ష","తెలంగాణలో అభివృద్ధి పనులకు వేగం","సినిమా షూటింగ్ షెడ్యూల్‌పై క్లారిటీ","యువ ఆటగాడి అద్భుత ప్రదర్శన","AI రంగంలో కొత్త అప్‌డేట్"];
+$("quick").innerHTML=q.map((x,i)=>`<div class="row"><span class="time">10:${42-i*6} AM</span><b>${x}</b></div>`).join("");
+const l=["తాజా ప్రకటన వెలువడింది.. మరిన్ని వివరాలు","హైదరాబాద్‌లో అధికారుల సమావేశం కొనసాగుతోంది","మ్యాచ్‌పై తాజా సమాచారం","సినిమా టీమ్ నుంచి అధికారిక అప్‌డేట్"];
+$("live").innerHTML=l.map(x=>`<div class="row"><span class="live-dot">●</span><b>${x}</b></div>`).join("")}
+document.addEventListener("DOMContentLoaded",()=>{render();
+$("prev").onclick=()=>{slide=(slide-1+news.length)%news.length;hero()};
+$("next").onclick=()=>{slide=(slide+1)%news.length;hero()};
+$("vote").onclick=()=>{const x=document.querySelector('input[name="p"]:checked');$("msg").textContent=x?` మీ ఓటు నమోదు అయింది — ${x.value}`:" ఒక option select చేయండి."};
+setInterval(()=>{slide=(slide+1)%news.length;hero()},5000)});

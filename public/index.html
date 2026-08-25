@@ -1,60 +1,12 @@
-<!doctype html>
-<html lang="te">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>VYRO NEWS — Telugu News Portal</title>
-<link rel="stylesheet" href="/shared.css">
-</head>
-<body>
-<div class="top"><div class="wrap"><span>మంగళవారం, 25 ఆగస్టు 2026</span><span>• హైదరాబాద్ 29°C</span><span class="social">తెలుగు &nbsp;|&nbsp; English &nbsp; f &nbsp; 𝕏 &nbsp; ◎ &nbsp; ▶</span></div></div>
-
-<header><div class="wrap head">
-<a class="logo-link" href="/"><img src="/images/vyro-logo.png" alt="VYRO"></a>
-<div class="ad"><strong>FOR ADS ON VYRO NEWS</strong><span>REACH MILLIONS OF READERS</span><button>CONTACT US</button></div>
-</div></header>
-
-<nav><div class="wrap nav"><button>☰</button><a class="active" href="/">హోమ్</a><a href="#andhra">ఆంధ్రప్రదేశ్</a><a href="#telangana">తెలంగాణ</a><a href="#cinema">సినిమా</a><a href="#sports">క్రీడలు</a><a href="#national">జాతీయం</a><a href="#business">బిజినెస్</a><a href="#lifestyle">లైఫ్ స్టైల్</a><a href="#videos">వీడియోలు</a><span class="search">⌕</span><a class="live">● LIVE</a></div></nav>
-
-<div class="ticker"><div class="wrap tick"><b>⚡ BREAKING NEWS</b><div class="ticker-window"><div id="tickerTrack"></div></div><button id="tickPrev">‹</button><button id="tickNext">›</button></div></div>
-
+<!doctype html><html lang="te"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>VYRO NEWS</title><link rel="stylesheet" href="/shared.css"></head><body>
+<div class="top"><div class="wrap">మంగళవారం, 25 ఆగస్టు 2026 <span>• హైదరాబాద్</span><span class="social">తెలుగు | English &nbsp; f &nbsp; 𝕏 &nbsp; ◎ &nbsp; ▶</span></div></div>
+<header><div class="wrap head"><a class="logo"><img src="/images/vyro-logo.png"></a><div class="ad"><b>FOR ADS ON VYRO NEWS</b><span>REACH MILLIONS OF READERS</span><button>CONTACT US</button></div></div></header>
+<nav><div class="wrap nav"><button>☰</button><a class="active">హోమ్</a><a>ఆంధ్రప్రదేశ్</a><a>తెలంగాణ</a><a>సినిమా</a><a>క్రీడలు</a><a>జాతీయం</a><a>బిజినెస్</a><a>లైఫ్ స్టైల్</a><a>వీడియోలు</a><span>⌕</span><a class="live">● LIVE</a></div></nav>
+<div class="ticker"><div class="wrap tick"><b>⚡ BREAKING NEWS</b><div id="tickerTrack"></div><button id="prev">‹</button><button id="next">›</button></div></div>
 <main class="wrap">
-<section class="hero-grid">
-  <article id="heroMain" class="hero-card"><div class="hero-overlay"><label>TOP STORY</label><small id="heroMeta"></small><h1 id="heroTitle"></h1><p id="heroDesc"></p><div class="dots" id="heroDots"></div></div></article>
-  <article id="heroCenter" class="hero-card center-card"><div class="hero-overlay"><label id="centerCat"></label><small id="centerMeta"></small><h2 id="centerTitle"></h2><p id="centerDesc"></p></div></article>
-  <div class="hero-side">
-    <article id="heroSmall1" class="small-card"><div class="hero-overlay"><label id="small1Cat"></label><small id="small1Meta"></small><h3 id="small1Title"></h3></div></article>
-    <article id="heroSmall2" class="small-card"><div class="hero-overlay"><label id="small2Cat"></label><small id="small2Meta"></small><h3 id="small2Title"></h3></div></article>
-  </div>
-</section>
-
-<section class="section"><div class="title"><h2>🔥 TRENDING <em>NOW</em></h2><a>View All ›</a></div><div id="trending" class="trending"></div></section>
-
-<section class="columns">
-<div class="cat" id="andhra"><div class="cathead"><h2>ఆంధ్రప్రదేశ్</h2><a>View All ›</a></div><div id="andhraList"></div></div>
-<div class="cat" id="telangana"><div class="cathead"><h2>తెలంగాణ</h2><a>View All ›</a></div><div id="telanganaList"></div></div>
-<div class="cat" id="cinema"><div class="cathead"><h2>సినిమా</h2><a>View All ›</a></div><div id="cinemaList"></div></div>
-<div class="cat" id="sports"><div class="cathead"><h2>క్రీడలు</h2><a>View All ›</a></div><div id="sportsList"></div></div>
-</section>
-
-<section class="video-area" id="videos">
-<div><div class="title"><h2>▶ VYRO NEWS <em>VIDEOS</em></h2><a>View All ›</a></div><div id="videosGrid" class="videos"></div></div>
-<aside class="alerts"><span>🔔</span><h3>GET LATEST NEWS ALERTS</h3><p>తాజా వార్తలను మీ మొబైల్‌లో పొందండి</p><input placeholder="Enter your email"><button>SUBSCRIBE</button><div class="alert-links"><b>WhatsApp</b><b>Telegram</b><b>Push Alerts</b></div></aside>
-</section>
-
-<section class="feature-grid">
-<div class="feature-box"><div class="title"><h2>⚡ QUICK <em>UPDATES</em></h2><a>View All ›</a></div><div id="quickUpdates"></div></div>
-<div class="feature-box"><div class="title"><h2>🔴 VYRO <em>LIVE UPDATES</em></h2><a>View All ›</a></div><div id="liveUpdates"></div></div>
-<div class="feature-box poll"><div class="title"><h2>📊 POLL <em>OF THE DAY</em></h2></div><h3>ఈ వారం మీకు ఏ కేటగిరీ వార్తలు ఎక్కువగా నచ్చుతున్నాయి?</h3><label><input type="radio" name="poll" value="సినిమా"> సినిమా</label><label><input type="radio" name="poll" value="రాజకీయాలు"> రాజకీయాలు</label><label><input type="radio" name="poll" value="క్రీడలు"> క్రీడలు</label><label><input type="radio" name="poll" value="ఇతరాలు"> ఇతరాలు</label><button id="voteBtn">VOTE</button><span id="voteMsg"></span></div>
-</section>
-</main>
-
-<footer><div class="wrap foot">
-<div><img class="footer-logo" src="/images/vyro-logo.png" alt="VYRO"><p>తెలుగు రాష్ట్రాల తాజా వార్తలు, సినిమా, క్రీడలు, దేశం మరియు ప్రపంచం నుంచి ముఖ్యమైన అప్‌డేట్స్ — VYRO NEWS.</p><p>f &nbsp; 𝕏 &nbsp; ◎ &nbsp; ▶</p></div>
-<div><h4>QUICK LINKS</h4><a>హోమ్</a><a>ఆంధ్రప్రదేశ్</a><a>తెలంగాణ</a><a>సినిమా</a><a>క్రీడలు</a></div>
-<div><h4>CATEGORIES</h4><a>ఆంధ్రప్రదేశ్</a><a>తెలంగాణ</a><a>సినిమా</a><a>క్రీడలు</a><a>జాతీయం</a></div>
-<div><h4>COMPANY</h4><a>About Us</a><a>Contact Us</a><a>Advertise With Us</a><a>Privacy Policy</a><a>Terms & Conditions</a></div>
-<div><h4>CONTACT INFO</h4><p>☎ +91 93929 99999</p><p>✉ contact@vyronews.com</p><p>⌖ Hyderabad, Telangana, India</p></div>
-</div><div class="copy">© 2026 VYRO NEWS. All Rights Reserved.</div></footer>
-
-<script src="/app.js"></script>
-</body></html>
+<section class="hero"><article id="a"><div><label>TOP STORY</label><small id="am"></small><h1 id="at"></h1><p id="ad"></p><div id="dots"></div></div></article><article id="b"><div><label id="bc"></label><small id="bm"></small><h2 id="bt"></h2><p id="bd"></p></div></article><div class="side"><article id="c"><div><label id="cc"></label><small id="cm"></small><h3 id="ct"></h3></div></article><article id="d"><div><label id="dc"></label><small id="dm"></small><h3 id="dt"></h3></div></article></div></section>
+<section><div class="title"><h2>🔥 TRENDING <em>NOW</em></h2></div><div id="trend" class="trend"></div></section>
+<section class="grid4"><div class="cat"><h2>ఆంధ్రప్రదేశ్</h2><div id="ap"></div></div><div class="cat"><h2>తెలంగాణ</h2><div id="ts"></div></div><div class="cat"><h2>సినిమా</h2><div id="cin"></div></div><div class="cat"><h2>క్రీడలు</h2><div id="sport"></div></div></section>
+<section class="videos"><div><div class="title"><h2>▶ VYRO NEWS <em>VIDEOS</em></h2></div><div id="vid" class="vidgrid"></div></div><aside><h3>🔔 GET LATEST NEWS ALERTS</h3><p>తాజా వార్తలను మీ మొబైల్‌లో పొందండి</p><input placeholder="Enter your email"><button>SUBSCRIBE</button></aside></section>
+<section class="features"><div class="box"><div class="title"><h2>⚡ QUICK <em>UPDATES</em></h2></div><div id="quick"></div></div><div class="box"><div class="title"><h2>🔴 VYRO <em>LIVE UPDATES</em></h2></div><div id="live"></div></div><div class="box"><div class="title"><h2>📊 POLL <em>OF THE DAY</em></h2></div><h3>మీకు ఏ కేటగిరీ వార్తలు ఎక్కువగా నచ్చుతున్నాయి?</h3><label><input type="radio" name="p" value="సినిమా"> సినిమా</label><label><input type="radio" name="p" value="రాజకీయాలు"> రాజకీయాలు</label><label><input type="radio" name="p" value="క్రీడలు"> క్రీడలు</label><button id="vote">VOTE</button><span id="msg"></span></div></section>
+</main><footer><div class="wrap foot"><div><img src="/images/vyro-logo.png"><p>తెలుగు రాష్ట్రాల తాజా వార్తలు, సినిమా, క్రీడలు, దేశం మరియు ప్రపంచం నుంచి ముఖ్యమైన అప్‌డేట్స్ — VYRO NEWS.</p></div><div><h4>QUICK LINKS</h4><p>హోమ్</p><p>ఆంధ్రప్రదేశ్</p><p>తెలంగాణ</p><p>సినిమా</p></div><div><h4>CATEGORIES</h4><p>క్రీడలు</p><p>జాతీయం</p><p>బిజినెస్</p><p>వీడియోలు</p></div><div><h4>COMPANY</h4><p>About Us</p><p>Contact Us</p><p>Advertise With Us</p><p>Privacy Policy</p></div><div><h4>CONTACT INFO</h4><p>☎ +91 93929 99999</p><p>✉ contact@vyronews.com</p><p>⌖ Hyderabad, Telangana, India</p></div></div><div class="copy">© 2026 VYRO NEWS. All Rights Reserved.</div></footer><script src="/app.js"></script></body></html>

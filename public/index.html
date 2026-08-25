@@ -1,166 +1,60 @@
 <!doctype html>
 <html lang="te">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#d40000">
-  <title>VYRO NEWS — తెలుగు న్యూస్ పోర్టల్</title>
-  <link rel="stylesheet" href="/shared.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VYRO NEWS — Telugu News Portal</title>
+<link rel="stylesheet" href="/shared.css">
 </head>
 <body>
-  <div class="top-strip">
-    <div>శుక్రవారం, 23 ఆగస్టు 2026 | హైదరాబాద్ 28°C</div>
-    <div class="top-links"><span>తెలుగు</span><span>|</span><span>English</span><span>f</span><span>𝕏</span><span>◎</span><span>▶</span></div>
-  </div>
+<div class="top"><div class="wrap"><span>మంగళవారం, 25 ఆగస్టు 2026</span><span>• హైదరాబాద్ 29°C</span><span class="social">తెలుగు &nbsp;|&nbsp; English &nbsp; f &nbsp; 𝕏 &nbsp; ◎ &nbsp; ▶</span></div></div>
 
-  <header class="site-header">
-    <div class="logo-wrap">
-      <a class="logo-image-link" href="/" aria-label="VYRO NEWS">
-        <img class="logo-image" src="/vyro-logo.png" alt="VYRO">
-      </a>
-    </div>
+<header><div class="wrap head">
+<a class="logo-link" href="/"><img src="/images/vyro-logo.png" alt="VYRO"></a>
+<div class="ad"><strong>FOR ADS ON VYRO NEWS</strong><span>REACH MILLIONS OF READERS</span><button>CONTACT US</button></div>
+</div></header>
 
-    <div class="ad-box">
-      <div><strong>FOR ADS ON VYRO NEWS</strong><br><span>REACH MILLIONS OF READERS</span></div>
-      <button>CONTACT US</button>
-    </div>
-  </header>
+<nav><div class="wrap nav"><button>☰</button><a class="active" href="/">హోమ్</a><a href="#andhra">ఆంధ్రప్రదేశ్</a><a href="#telangana">తెలంగాణ</a><a href="#cinema">సినిమా</a><a href="#sports">క్రీడలు</a><a href="#national">జాతీయం</a><a href="#business">బిజినెస్</a><a href="#lifestyle">లైఫ్ స్టైల్</a><a href="#videos">వీడియోలు</a><span class="search">⌕</span><a class="live">● LIVE</a></div></nav>
 
-  <nav class="main-nav">
-    <button class="hamburger" aria-label="Menu">☰</button>
-    <a class="active" href="/">హోమ్</a>
-    <a href="#andhra">ఆంధ్రప్రదేశ్</a>
-    <a href="#telangana">తెలంగాణ</a>
-    <a href="#bharat">భారతదేశం</a>
-    <a href="#cinema">సినిమా</a>
-    <a href="#business">బిజినెస్</a>
-    <a href="#sports">స్పోర్ట్స్</a>
-    <a href="#videos">వీడియోలు</a>
-    <a href="#lifestyle">లైఫ్ స్టైల్</a>
-    <a class="search" href="#latest">⌕</a>
-    <a class="live" href="#videos">● LIVE</a>
-  </nav>
+<div class="ticker"><div class="wrap tick"><b>⚡ BREAKING NEWS</b><div class="ticker-window"><div id="tickerTrack"></div></div><button id="tickPrev">‹</button><button id="tickNext">›</button></div></div>
 
-  <div class="breaking">
-    <div class="breaking-label">⚡ BREAKING NEWS</div>
-    <div class="ticker" id="ticker">తాజా వార్తలు లోడ్ అవుతున్నాయి...</div>
-    <div class="ticker-arrows">‹ ›</div>
-  </div>
-
-  <main>
-    <section class="hero-grid container">
-      <article class="hero-card" id="heroCard">
-        <img id="heroImage" src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=80" alt="Top Story">
-        <div class="shade"></div>
-        <span class="top-story">TOP STORY</span>
-        <div class="hero-copy">
-          <div class="meta"><span id="heroCategory">సినిమా</span> • <span id="heroTime">25 నిమిషాల క్రితం</span></div>
-          <h1 id="heroTitle">కొత్త సినిమాపై భారీ అంచనాలు.. తాజా అప్‌డేట్ ఇదే</h1>
-          <p id="heroExcerpt">వైరల్ అవుతున్న తాజా వార్తలపై పూర్తి వివరాలు తెలుసుకోండి.</p>
-        </div>
-      </article>
-
-      <div class="side-stories" id="sideStories">
-          <article class="side-card">
-            <img src="/images/news-parliament.jpg" alt="">
-            <div class="side-card-overlay">
-              <span class="badge">ఆంధ్రప్రదేశ్</span>
-              <h3>ఏపీ అసెంబ్లీ సమావేశాలు ప్రారంభం.. కీలక అంశాలపై చర్చ</h3>
-              <small>40 నిమిషాల క్రితం</small>
-            </div>
-          </article>
-          <article class="side-card">
-            <img src="/images/news-telangana.jpg" alt="">
-            <div class="side-card-overlay">
-              <span class="badge">తెలంగాణ</span>
-              <h3>తెలంగాణలో తాజా పరిణామాలు.. ప్రభుత్వం కీలక నిర్ణయం</h3>
-              <small>1 గంట క్రితం</small>
-            </div>
-          </article>
-          <article class="side-card">
-            <img src="/images/news-sports.jpg" alt="">
-            <div class="side-card-overlay">
-              <span class="badge">స్పోర్ట్స్</span>
-              <h3>IPL 2025: చెన్నై సూపర్ కింగ్స్‌కు అద్భుత విజయం</h3>
-              <small>2 గంటల క్రితం</small>
-            </div>
-          </article>
-        </div>
-    </section>
-
-    <section class="trending container" id="trending">
-      <div class="section-title"><span>🔥</span><h2>TRENDING <b>NOW</b></h2></div>
-      <div class="trend-row" id="trendRow"></div>
-    </section>
-
-    <section class="category-grid container" id="categoryGrid"></section>
-
-    <section class="short-video-strip container">
-      <div class="short-intro">
-        <strong>VYRO 60</strong><span>60<br>SEC</span>
-        <p>ముఖ్యమైన వార్తలు<br><b>60 సెకన్లలో</b></p>
-        <button>▶</button>
-      </div>
-      <div class="short-track" id="shortTrack"></div>
-    </section>
-
-    
-<section class="vyro-features container">
-  <div class="feature-column">
-    <div class="section-title"><span>⚡</span><h2>QUICK <b>UPDATES</b></h2></div>
-    <div class="quick-updates" id="quickUpdates"></div>
-  </div>
-
-  <div class="feature-column">
-    <div class="section-title"><span>🔴</span><h2>VYRO <b>LIVE</b></h2></div>
-    <div class="live-updates" id="liveUpdates"></div>
-  </div>
-
-  <div class="feature-column poll-column">
-    <div class="section-title"><span>📊</span><h2>POLL <b>OF THE DAY</b></h2></div>
-    <div class="poll-card">
-      <h3>ఈరోజు మీకు ఏ న్యూస్ కేటగిరీ ఎక్కువగా నచ్చుతుంది?</h3>
-      <label><input type="radio" name="vyroPoll" value="Cinema"> సినిమా</label>
-      <label><input type="radio" name="vyroPoll" value="Politics"> పాలిటిక్స్</label>
-      <label><input type="radio" name="vyroPoll" value="Sports"> స్పోర్ట్స్</label>
-      <label><input type="radio" name="vyroPoll" value="Entertainment"> ఎంటర్టైన్మెంట్</label>
-      <button id="pollBtn">VOTE</button>
-      <div id="pollResult" class="poll-result"></div>
-    </div>
+<main class="wrap">
+<section class="hero-grid">
+  <article id="heroMain" class="hero-card"><div class="hero-overlay"><label>TOP STORY</label><small id="heroMeta"></small><h1 id="heroTitle"></h1><p id="heroDesc"></p><div class="dots" id="heroDots"></div></div></article>
+  <article id="heroCenter" class="hero-card center-card"><div class="hero-overlay"><label id="centerCat"></label><small id="centerMeta"></small><h2 id="centerTitle"></h2><p id="centerDesc"></p></div></article>
+  <div class="hero-side">
+    <article id="heroSmall1" class="small-card"><div class="hero-overlay"><label id="small1Cat"></label><small id="small1Meta"></small><h3 id="small1Title"></h3></div></article>
+    <article id="heroSmall2" class="small-card"><div class="hero-overlay"><label id="small2Cat"></label><small id="small2Meta"></small><h3 id="small2Title"></h3></div></article>
   </div>
 </section>
 
-<section class="videos container" id="videos">
-      <div class="section-title video-title"><span>🔥</span><h2>VYRO NEWS <b>VIDEOS</b></h2><a href="#videos">View All →</a></div>
-      <div class="video-layout">
-        <div class="video-grid" id="videoGrid"></div>
-        <aside class="subscribe">
-          <h3>GET LATEST NEWS ALERTS</h3>
-          <p>Subscribe and get breaking news alerts to your mobile.</p>
-          <input type="text" placeholder="Enter your mobile number">
-          <button>SUBSCRIBE</button>
-          <small>🔒 We respect your privacy</small>
-        </aside>
-      </div>
-    </section>
-  </main>
+<section class="section"><div class="title"><h2>🔥 TRENDING <em>NOW</em></h2><a>View All ›</a></div><div id="trending" class="trending"></div></section>
 
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a class="footer-logo-image-link" href="/" aria-label="VYRO">
-          <img class="footer-logo-image" src="/vyro-logo.png" alt="VYRO">
-        </a>
-        <p>తెలుగు రాష్ట్రాలు, దేశం, సినిమా, స్పోర్ట్స్ మరియు తాజా ట్రెండింగ్ వార్తలు — ఒకే చోట.</p>
-      </div>
-      <div><h4>QUICK LINKS</h4><a href="/">హోమ్</a><a href="#andhra">ఆంధ్రప్రదేశ్</a><a href="#telangana">తెలంగాణ</a><a href="#cinema">సినిమా</a><a href="#sports">స్పోర్ట్స్</a></div>
-      <div><h4>CATEGORIES</h4><a href="#business">బిజినెస్</a><a href="#videos">వీడియోలు</a><a href="#lifestyle">లైఫ్ స్టైల్</a><a href="#latest">తాజా వార్తలు</a></div>
-      <div><h4>COMPANY</h4><a href="#">About Us</a><a href="#">Contact Us</a><a href="#">Advertise With Us</a><a href="#">Privacy Policy</a><a href="#">Terms & Conditions</a></div>
-      <div><h4>CONTACT INFO</h4><p>☎ +91 93929 99999</p><p>✉ contact@vyronews.com</p><p>⌖ Hyderabad, Telangana, India</p></div>
-    </div>
-    <div class="copyright">© 2026 VYRO NEWS. All Rights Reserved.</div>
-  </footer>
+<section class="columns">
+<div class="cat" id="andhra"><div class="cathead"><h2>ఆంధ్రప్రదేశ్</h2><a>View All ›</a></div><div id="andhraList"></div></div>
+<div class="cat" id="telangana"><div class="cathead"><h2>తెలంగాణ</h2><a>View All ›</a></div><div id="telanganaList"></div></div>
+<div class="cat" id="cinema"><div class="cathead"><h2>సినిమా</h2><a>View All ›</a></div><div id="cinemaList"></div></div>
+<div class="cat" id="sports"><div class="cathead"><h2>క్రీడలు</h2><a>View All ›</a></div><div id="sportsList"></div></div>
+</section>
 
-  <script src="/app.js"></script>
-</body>
-</html>
+<section class="video-area" id="videos">
+<div><div class="title"><h2>▶ VYRO NEWS <em>VIDEOS</em></h2><a>View All ›</a></div><div id="videosGrid" class="videos"></div></div>
+<aside class="alerts"><span>🔔</span><h3>GET LATEST NEWS ALERTS</h3><p>తాజా వార్తలను మీ మొబైల్‌లో పొందండి</p><input placeholder="Enter your email"><button>SUBSCRIBE</button><div class="alert-links"><b>WhatsApp</b><b>Telegram</b><b>Push Alerts</b></div></aside>
+</section>
+
+<section class="feature-grid">
+<div class="feature-box"><div class="title"><h2>⚡ QUICK <em>UPDATES</em></h2><a>View All ›</a></div><div id="quickUpdates"></div></div>
+<div class="feature-box"><div class="title"><h2>🔴 VYRO <em>LIVE UPDATES</em></h2><a>View All ›</a></div><div id="liveUpdates"></div></div>
+<div class="feature-box poll"><div class="title"><h2>📊 POLL <em>OF THE DAY</em></h2></div><h3>ఈ వారం మీకు ఏ కేటగిరీ వార్తలు ఎక్కువగా నచ్చుతున్నాయి?</h3><label><input type="radio" name="poll" value="సినిమా"> సినిమా</label><label><input type="radio" name="poll" value="రాజకీయాలు"> రాజకీయాలు</label><label><input type="radio" name="poll" value="క్రీడలు"> క్రీడలు</label><label><input type="radio" name="poll" value="ఇతరాలు"> ఇతరాలు</label><button id="voteBtn">VOTE</button><span id="voteMsg"></span></div>
+</section>
+</main>
+
+<footer><div class="wrap foot">
+<div><img class="footer-logo" src="/images/vyro-logo.png" alt="VYRO"><p>తెలుగు రాష్ట్రాల తాజా వార్తలు, సినిమా, క్రీడలు, దేశం మరియు ప్రపంచం నుంచి ముఖ్యమైన అప్‌డేట్స్ — VYRO NEWS.</p><p>f &nbsp; 𝕏 &nbsp; ◎ &nbsp; ▶</p></div>
+<div><h4>QUICK LINKS</h4><a>హోమ్</a><a>ఆంధ్రప్రదేశ్</a><a>తెలంగాణ</a><a>సినిమా</a><a>క్రీడలు</a></div>
+<div><h4>CATEGORIES</h4><a>ఆంధ్రప్రదేశ్</a><a>తెలంగాణ</a><a>సినిమా</a><a>క్రీడలు</a><a>జాతీయం</a></div>
+<div><h4>COMPANY</h4><a>About Us</a><a>Contact Us</a><a>Advertise With Us</a><a>Privacy Policy</a><a>Terms & Conditions</a></div>
+<div><h4>CONTACT INFO</h4><p>☎ +91 93929 99999</p><p>✉ contact@vyronews.com</p><p>⌖ Hyderabad, Telangana, India</p></div>
+</div><div class="copy">© 2026 VYRO NEWS. All Rights Reserved.</div></footer>
+
+<script src="/app.js"></script>
+</body></html>

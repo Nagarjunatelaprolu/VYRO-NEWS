@@ -1,53 +1,69 @@
 const fallback = [
-  {id:1,category:"సినిమా",title:"పాన్ ఇండియా రేంజ్‌లో కొత్త సినిమా.. అఫీషియల్ అనౌన్స్‌మెంట్ విడుదల",content:"కొత్త ప్రాజెక్ట్‌పై మేకర్స్ కీలక అప్‌డేట్ ఇచ్చారు. పూర్తి వివరాలు త్వరలో వెల్లడించనున్నారు.",image_url:"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80",breaking:1,featured:1,status:"Published",created_at:new Date().toISOString()},
-  {id:2,category:"ఆంధ్రప్రదేశ్",title:"విశాఖలో కొత్త అభివృద్ధి ప్రాజెక్టులకు వేగం",content:"ప్రాంతీయ మౌలిక వసతులపై అధికారుల సమీక్ష జరిగింది.",image_url:"https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=700&q=80",status:"Published",created_at:new Date(Date.now()-600000).toISOString()},
-  {id:3,category:"తెలంగాణ",title:"హైదరాబాద్‌లో కీలక ప్రాజెక్టులపై కొత్త ప్రకటన",content:"నగర అభివృద్ధికి సంబంధించిన పనులపై అధికారులు వివరాలు వెల్లడించారు.",image_url:"https://images.unsplash.com/photo-1576485375217-d6a95e34d043?auto=format&fit=crop&w=700&q=80",status:"Published",created_at:new Date(Date.now()-1200000).toISOString()},
-  {id:4,category:"భారతదేశం",title:"దేశవ్యాప్తంగా టెక్నాలజీ రంగంలో కొత్త అవకాశాలు",content:"కొత్త పెట్టుబడులు, స్టార్టప్‌లపై నిపుణులు ఆశావహంగా ఉన్నారు.",image_url:"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=700&q=80",status:"Published",created_at:new Date(Date.now()-1800000).toISOString()},
-  {id:5,category:"స్పోర్ట్స్",title:"భారత్ జట్టు తదుపరి సిరీస్‌పై ఆసక్తి పెరుగుతోంది",content:"క్రీడాభిమానులు తాజా షెడ్యూల్ కోసం ఎదురుచూస్తున్నారు.",image_url:"https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=700&q=80",status:"Published",created_at:new Date(Date.now()-2400000).toISOString()},
-  {id:6,category:"సినిమా",title:"కొత్త మూవీ నుంచి ఫస్ట్ లుక్ విడుదల",content:"ఫస్ట్ లుక్ సోషల్ మీడియాలో వైరల్ అవుతోంది.",image_url:"https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=700&q=80",status:"Published",created_at:new Date(Date.now()-3000000).toISOString()},
-  {id:7,category:"ఆంధ్రప్రదేశ్",title:"విద్యా రంగంలో కొత్త నిర్ణయం",content:"విద్యార్థులకు ఉపయోగపడే పలు మార్పులను అధికారులు ప్రకటించారు.",image_url:"https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=700&q=80",status:"Published",created_at:new Date(Date.now()-3600000).toISOString()},
-  {id:8,category:"బిజినెస్",title:"మార్కెట్లలో కీలక కదలికలు.. పెట్టుబడిదారుల దృష్టి",content:"వ్యాపార రంగంలో తాజా పరిణామాలు ఆసక్తిని పెంచుతున్నాయి.",image_url:"https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=700&q=80",status:"Published",created_at:new Date(Date.now()-4200000).toISOString()}
+ {id:1,title:"పాన్ ఇండియా రేంజ్‌లో భారీ సినిమా.. అఫీషియల్ అనౌన్స్‌మెంట్ విడుదల",category:"సినిమా",content:"సినిమా ఇండస్ట్రీలో మరో క్రేజీ ప్రాజెక్ట్‌పై అధికారిక ప్రకటన వచ్చింది.",image_url:"https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=900&q=80",breaking:1,featured:1,status:"Published",created_at:new Date().toISOString()},
+ {id:2,title:"ఏపీ అసెంబ్లీ సమావేశాలు ప్రారంభం.. కీలక అంశాలపై చర్చ",category:"ఆంధ్రప్రదేశ్",content:"ముఖ్యమైన అంశాలపై సభలో చర్చ కొనసాగుతోంది.",image_url:"https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=700&q=80",status:"Published",created_at:new Date().toISOString()},
+ {id:3,title:"తెలంగాణలో రైతు సమస్యలపై ప్రభుత్వం కీలక నిర్ణయం",category:"తెలంగాణ",content:"రైతులకు సంబంధించిన పలు అంశాలపై ప్రభుత్వం చర్యలు చేపట్టింది.",image_url:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=700&q=80",status:"Published",created_at:new Date().toISOString()},
+ {id:4,title:"బంగారం ధరల్లో మరోసారి మార్పులు.. మార్కెట్‌లో తాజా పరిస్థితి",category:"బిజినెస్",content:"దేశీయ మార్కెట్‌లో బంగారం ధరలపై కొత్త అప్‌డేట్ వచ్చింది.",image_url:"https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=700&q=80",status:"Published",created_at:new Date().toISOString()},
+ {id:5,title:"IPL 2026: జట్టు వ్యూహాల్లో భారీ మార్పులు",category:"స్పోర్ట్స్",content:"టోర్నమెంట్‌కు ముందు జట్లు వ్యూహాలను మార్చుకుంటున్నాయి.",image_url:"https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=700&q=80",status:"Published",created_at:new Date().toISOString()},
+ {id:6,title:"దేశవ్యాప్తంగా టెక్నాలజీ రంగంలో కొత్త అవకాశాలు",category:"బిజినెస్",content:"టెక్ రంగంలో కొత్త పెట్టుబడులు, అవకాశాలపై నిపుణుల అంచనాలు.",image_url:"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=700&q=80",status:"Published",created_at:new Date().toISOString()},
+ {id:7,title:"హైదరాబాద్‌లో కొత్త ప్రాజెక్టులకు వేగం",category:"తెలంగాణ",content:"నగర అభివృద్ధికి సంబంధించి పలు ప్రాజెక్టులు ముందుకు సాగుతున్నాయి.",image_url:"https://images.unsplash.com/photo-1570168007204-dfb528c6958f?auto=format&fit=crop&w=700&q=80",status:"Published",created_at:new Date().toISOString()},
+ {id:8,title:"కొత్త వెబ్ సిరీస్‌పై భారీ అంచనాలు",category:"సినిమా",content:"ప్రేక్షకులను ఆకట్టుకునేలా కొత్త కంటెంట్ సిద్ధమవుతోంది.",image_url:"https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=700&q=80",status:"Published",created_at:new Date().toISOString()}
 ];
 
-let news = [];
-const $ = s => document.querySelector(s);
-const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
-const img = x => x.image_url || x.image || "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=900&q=80";
-const time = x => new Date(x.created_at || Date.now()).toLocaleTimeString("en-IN",{hour:"2-digit",minute:"2-digit"});
+const videos = [
+ ["అడ్వెంచర్ ట్రావెల్‌కు కొత్త డెస్టినేషన్.. వీడియో వైరల్","https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=500&q=80","02:45"],
+ ["హైదరాబాద్‌లో భారీ ఈవెంట్.. ప్రత్యేక దృశ్యాలు","https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=500&q=80","02:53"],
+ ["ఏపీ అసెంబ్లీ సమావేశాల హైలైట్స్","https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&w=500&q=80","01:12"],
+ ["పందెం భారత్ ట్రైన్‌కు కొత్త స్టాప్‌లు","https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=500&q=80","02:29"],
+ ["బంగారం ధరలు ఎందుకు పెరుగుతున్నాయి?","https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=500&q=80","01:45"]
+];
+
+function esc(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));}
+function imageOf(n){return n.image_url || n.image || "https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=700&q=80";}
+function timeText(){return "ఇప్పుడే";}
 
 async function loadNews(){
   try{
-    const r=await fetch("/api/news");
+    const r=await fetch("/api/news",{cache:"no-store"});
+    if(!r.ok) throw new Error();
     const data=await r.json();
-    news=Array.isArray(data)&&data.length?data:fallback;
-  }catch(e){news=fallback}
-  render();
+    return Array.isArray(data)&&data.length?data:fallback;
+  }catch(e){return fallback;}
 }
 
-function render(){
-  const pub=news.filter(x=>x.status==="Published").sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));
-  if(!pub.length)return;
+function render(news){
+  const hero=news[0], side=news.slice(1,5), trend=news.slice(0,5);
+  document.getElementById("heroImage").src=imageOf(hero);
+  document.getElementById("heroTitle").textContent=hero.title;
+  document.getElementById("heroCategory").textContent=hero.category;
+  document.getElementById("heroTime").textContent=timeText();
+  document.getElementById("heroExcerpt").textContent=hero.content||"తాజా వార్తల పూర్తి వివరాలు VYRO NEWSలో తెలుసుకోండి.";
 
-  const hero=pub.find(x=>x.featured)||pub[0];
-  $("#heroCard").style.backgroundImage=`url("${img(hero)}")`;
-  $("#heroCard").innerHTML=`<div class="hero-overlay"><span class="badge">TOP STORY</span><h1>${esc(hero.title)}</h1><p>${esc(hero.content)}</p><a class="read" href="/news.html?id=${hero.id}">READ MORE →</a></div>`;
+  document.getElementById("ticker").textContent=(news.filter(x=>x.breaking).slice(0,4).map(x=>x.title).join("  •  ")||news.slice(0,4).map(x=>x.title).join("  •  "));
 
-  $("#sideNews").innerHTML=pub.slice(1,5).map(x=>`<article class="side-item" onclick="location.href='/news.html?id=${x.id}'"><img src="${img(x)}"><div><span class="tag">${esc(x.category)}</span><h3>${esc(x.title)}</h3></div></article>`).join("");
+  document.getElementById("sideStories").innerHTML=side.map(x=>`
+    <article class="side-story">
+      <img src="${imageOf(x)}" alt="">
+      <div class="copy"><span class="cat">${esc(x.category)}</span><small> • ${timeText()}</small><h3>${esc(x.title)}</h3></div>
+    </article>`).join("");
 
-  $("#latestList").innerHTML=pub.slice(0,6).map(x=>`<a class="latest-item" href="/news.html?id=${x.id}"><time>${time(x)}</time><b>${esc(x.title)}</b><img src="${img(x)}"></a>`).join("");
+  document.getElementById("trendRow").innerHTML=trend.map((x,i)=>`
+    <article class="trend-card"><div><span class="num">${i+1}</span><img src="${imageOf(x)}" alt=""></div><div><h3>${esc(x.title)}</h3><small>● ${i+1} గంట క్రితం</small></div></article>`).join("");
 
-  $("#ticker").textContent=pub.filter(x=>x.breaking).slice(0,5).map(x=>x.title).join("  •  ") || pub.slice(0,5).map(x=>x.title).join("  •  ");
+  const groups=["ఆంధ్రప్రదేశ్","తెలంగాణ","సినిమా","స్పోర్ట్స్"];
+  document.getElementById("categoryGrid").innerHTML=groups.map(g=>{
+    const items=news.filter(x=>x.category===g).slice(0,4);
+    const use=items.length?items:news.slice(0,4);
+    return `<section class="category-box" id="${g==="ఆంధ్రప్రదేశ్"?"andhra":g==="తెలంగాణ"?"telangana":g==="సినిమా"?"cinema":"sports"}"><h3>${g}</h3>${use.map(x=>`
+      <article class="cat-item"><img src="${imageOf(x)}" alt=""><div><h4>${esc(x.title)}</h4><small>● ${timeText()}</small></div></article>`).join("")}</section>`;
+  }).join("");
 
-  $("#trending").innerHTML=pub.slice(0,6).map((x,i)=>`<a class="trend" href="/news.html?id=${x.id}"><span class="trend-num">${String(i+1).padStart(2,"0")}</span><img src="${img(x)}"><b>${esc(x.title)}</b></a>`).join("");
-
-  const cats=[["ఆంధ్రప్రదేశ్","#andhraList"],["తెలంగాణ","#telanganaList"],["భారతదేశం","#bharatList"],["సినిమా","#cinemaList"],["స్పోర్ట్స్","#sportsList"]];
-  cats.forEach(([cat,sel])=>{
-    const arr=pub.filter(x=>x.category===cat).slice(0,3);
-    const use=arr.length?arr:pub.slice(0,3);
-    $(sel).innerHTML=use.map(x=>`<a class="cat-item" href="/news.html?id=${x.id}"><img src="${img(x)}"><b>${esc(x.title)}</b></a>`).join("");
-  });
-
-  $("#videoRow").innerHTML=pub.slice(0,5).map(x=>`<a class="video" href="/news.html?id=${x.id}"><div class="play"><img src="${img(x)}"></div><b>${esc(x.title)}</b></a>`).join("");
+  document.getElementById("shortTrack").innerHTML=news.slice(0,5).map(x=>`
+    <article class="short-card"><img src="${imageOf(x)}" alt=""><div><h4>${esc(x.title)}</h4><small>● 60 SEC</small></div></article>`).join("");
 }
-loadNews();
-setInterval(loadNews,60000);
+
+function renderVideos(){
+  document.getElementById("videoGrid").innerHTML=videos.map(v=>`
+    <article class="video-card"><img src="${v[1]}" alt=""><span class="play">▶</span><span class="duration">${v[2]}</span><h3>${v[0]}</h3></article>`).join("");
+}
+
+(async()=>{const news=await loadNews();render(news);renderVideos();})();

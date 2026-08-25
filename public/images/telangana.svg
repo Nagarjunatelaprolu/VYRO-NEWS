@@ -1,13 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#18313a"/><stop offset="1" stop-color="#c40000"/></linearGradient></defs>
-<rect width="1200" height="700" fill="url(#g)"/>
-<circle cx="1000" cy="150" r="170" fill="#ffffff12"/><circle cx="980" cy="155" r="90" fill="#ffffff10"/>
-<path d="M0 590 Q260 430 520 560 T1200 470 V700 H0Z" fill="#00000055"/>
-<text x="65" y="85" font-family="Arial,sans-serif" font-size="34" font-weight="800" fill="#fff">VYRO NEWS</text>
-<rect x="65" y="120" width="210" height="55" rx="8" fill="#c40000"/>
-<text x="170" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="800" fill="#fff">తెలంగాణ</text>
-<text x="65" y="520" font-family="Arial,sans-serif" font-size="44" font-weight="900" fill="#fff">తెలంగాణలో తాజా పరిణామాలు</text>
-<text x="65" y="575" font-family="Arial,sans-serif" font-size="22" fill="#fff">LATEST • VYRO NEWS • 2026</text>
-<circle cx="1040" cy="570" r="58" fill="#00000088" stroke="#fff" stroke-width="3"/>
-<polygon points="1025,540 1025,600 1070,570" fill="#fff"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#152026"/><stop offset="1" stop-color="#c40000"/></linearGradient></defs><rect width="1200" height="700" fill="url(#g)"/><circle cx="1000" cy="150" r="180" fill="#fff" opacity=".06"/><path d="M0 560 Q280 420 560 555 T1200 460 V700 H0Z" fill="#000" opacity=".4"/><text x="60" y="90" fill="#fff" font-family="Arial" font-size="34" font-weight="900">VYRO NEWS</text><rect x="60" y="120" width="190" height="52" rx="6" fill="#c40000"/><text x="155" y="155" fill="#fff" text-anchor="middle" font-family="Arial" font-size="22" font-weight="800">TS</text><text x="60" y="505" fill="#fff" font-family="Arial" font-size="42" font-weight="900">తెలంగాణలో కీలక ప్రభుత్వ నిర్ణయం</text><text x="60" y="560" fill="#fff" opacity=".85" font-family="Arial" font-size="21">LATEST UPDATE • VYRO NEWS</text><circle cx="1040" cy="565" r="55" fill="#000" opacity=".6"/><polygon points="1025,535 1025,595 1070,565" fill="#fff"/></svg>

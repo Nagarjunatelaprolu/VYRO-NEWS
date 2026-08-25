@@ -7,7 +7,7 @@ const img=n=>{
  return p.endsWith(".svg")?p.replace(".svg",".png"):p;
 };
 const fmt=n=>{const d=new Date(n.created_at);return isNaN(d)?"తాజాగా":d.toLocaleDateString("te-IN",{day:"2-digit",month:"short"})};
-function setBg(id,n){const e=$(id);if(e)e.style.backgroundImage=`url("${img(n)}")`}
+function setBg(id,n){const e=$(id);if(e){e.style.backgroundImage=`url("${img(n)}")`;e.dataset.img=img(n)}}
 function hero(){if(!news.length)return;const a=news[slide%news.length],b=news[(slide+1)%news.length],c=news[(slide+2)%news.length],d=news[(slide+3)%news.length];
 setBg("a",a);setBg("b",b);setBg("c",c);setBg("d",d);
 $("am").textContent=`${a.category} • ${fmt(a)}`;$("at").textContent=a.title;$("ad").textContent=a.content;
@@ -33,6 +33,7 @@ const q=["అమరావతిలో కీలక ప్రాజెక్ట�
 $("quick").innerHTML=q.map((x,i)=>`<div class="row"><span class="time">10:${42-i*6} AM</span><b>${x}</b></div>`).join("");
 const l=["తాజా ప్రకటన వెలువడింది.. మరిన్ని వివరాలు","హైదరాబాద్‌లో అధికారుల సమావేశం కొనసాగుతోంది","మ్యాచ్‌పై తాజా సమాచారం","సినిమా టీమ్ నుంచి అధికారిక అప్‌డేట్"];
 $("live").innerHTML=l.map(x=>`<div class="row"><span class="live-dot">●</span><b>${x}</b></div>`).join("")}
+document.addEventListener("error",e=>{if(e.target&&e.target.tagName==="IMG"&&e.target.src&&!e.target.src.endsWith("/images/hero1.png")){e.target.src="/images/hero1.png"}},{capture:true});
 document.addEventListener("DOMContentLoaded",()=>{render();
 $("prev").onclick=()=>{slide=(slide-1+news.length)%news.length;hero()};
 $("next").onclick=()=>{slide=(slide+1)%news.length;hero()};
